@@ -5,7 +5,13 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily : {
+        'helios' : ['Helois', 'Regular'],
+        'bebas' : ['Bebas', 'Redular'],
+        'dinpro' : ['DIN Pro Regular', 'Regular'],
+      }
+    },
   },
   plugins: [],
 }
