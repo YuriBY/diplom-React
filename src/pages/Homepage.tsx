@@ -1,7 +1,11 @@
+import { Books } from "../components/Books/books";
+import { Title } from "../components/Title/title";
+
 export const Homepage = () => {
   return (
     <>
-      <div>Hello</div>
+      <Title text="New Releases Books"/>
+      <Books/>
     </>
   );
 };

@@ -8,7 +8,7 @@ export const Header = () => {
   return (
     <>
       <div className="flex flex-row justify-between w-4/6 h-28 m-auto ">
-        <div className="w-32 h-7 py-10">
+        <div className="w-4/6 h-7 py-10">
           <img src={bookstore} alt="" className="" />
         </div>
         <div className="w-6/12 h-14 my-6 flex">
