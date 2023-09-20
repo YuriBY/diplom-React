@@ -7,7 +7,7 @@ import man from "../../assets/man.png";
 export const Header = () => {
   return (
     <>
-      <div className="flex flex-row justify-between w-4/6 h-28 m-auto ">
+      <div className="flex flex-row justify-between w-[1120px] h-28 m-auto ">
         <div className="w-1/6 h-7 py-10">
           <img src={bookstore} alt="" className="" />
         </div>
