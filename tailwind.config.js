@@ -8,8 +8,8 @@ export default {
     extend: {
       fontFamily : {
         'helios' : ['Helois', 'Regular'],
-        'bebas' : ['Bebas', 'Regular'],
-        'dinpro' : ['DIN Pro Regular', 'Regular'],
+        'bebas' : ['Bebas', 'sans-serif'],
+        'dinpro' : ['"DIN pro"', 'sans-serif']
       }
     },
   },
