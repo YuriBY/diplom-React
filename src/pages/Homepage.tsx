@@ -1,5 +1,5 @@
-import { Book } from "../components/Book/book";
-import { Title } from "../components/Title/title";
+import { Book } from "../components/Book/Book";
+import { Title } from "../components/Title/Title";
 import { selectAllBooks } from "../redux/books/booksSlice";
 import { useAppSelector, useAppDispatch } from "../redux/hooks";
 import { RootState } from "../redux/store";
@@ -7,10 +7,13 @@ import { useEffect } from "react";
 import { fetchBooks } from "../redux/books/booksSlice";
 import { useSearchParams } from "react-router-dom";
 import { currentPage } from "../utils/currentPage";
+import { PaginationComponent } from "../components/PaginationComponent/PaginationComponent";
 
 export const Homepage = () => {
   const dispatch = useAppDispatch();
   const booksObj = useAppSelector((state: RootState) => selectAllBooks(state));
+  const limit = parseInt(booksObj.total);
+
   const books = useAppSelector(
     (state: RootState) => selectAllBooks(state).books
   );
@@ -38,6 +41,7 @@ export const Homepage = () => {
           <Book book={book} key={book.isbn13} />
         ))}
       </div>
+      <PaginationComponent limit={limit} />
     </>
   );
 };

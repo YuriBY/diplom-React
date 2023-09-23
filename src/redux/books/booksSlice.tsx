@@ -17,12 +17,12 @@ export const fetchBooks = createAsyncThunk(
   );
 
 export interface ResponseObj {
-  total: number;
+  total: string;
   books: SingleBook[]
 }
 
 const initialState: ResponseObj = {
-    total: 0,
+    total: '',
     books: [],
 };
 
