@@ -33,25 +33,25 @@ export const PaginationComponent = ({ limit }: PaginationComponentProps) => {
             onClick={() => updatePageInUrl(currentPage - 1)}
           >
             <img src={leftIcon} alt="" className="w-6 h-6" />
-            <p className="ml-2">Prev</p>
+            <p className="ml-2 font-helios font-semibold text-[#A8A8A8] hover:text-[#5B5A62]">Prev</p>
           </div>
           <div className="font-helios font-bols text-[#A8A8A8] cursor-pointer">
             {currentPage > 1 ? (
               <>
                 <span
-                  className="mx-8"
+                  className="mx-8 text-[#A8A8A8] font-bold hover:text-[#313037]"
                   onClick={() => updatePageInUrl(currentPage - 1)}
                 >
                   {currentPage - 1}
                 </span>
                 <span
-                  className="mx-8 text-[#313037]"
+                  className="mx-8 text-[#313037] font-bold"
                   onClick={() => updatePageInUrl(currentPage)}
                 >
                   {currentPage}
                 </span>
                 <span
-                  className="mx-8"
+                  className="mx-8 text-[#A8A8A8] font-bold hover:text-[#313037]"
                   onClick={() => updatePageInUrl(currentPage + 1)}
                 >
                   {" "}
@@ -81,7 +81,7 @@ export const PaginationComponent = ({ limit }: PaginationComponentProps) => {
             onClick={() => updatePageInUrl(currentPage + 1)}
           >
             <img src={rightIcon} alt="" className="w-6 h-6" />
-            <p className="ml-2">Next</p>
+            <p className="ml-2 font-helios font-semibold text-[#313037] hover:text-[#5B5A62]">Next</p>
           </div>
           <div className="absolute h-px w-full bg-[#A8A8A8] -top-6"></div>
         </div>

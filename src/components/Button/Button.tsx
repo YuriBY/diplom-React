@@ -4,6 +4,6 @@ interface ButtonProps {
 
 export const Button = ({value}: ButtonProps) => {
     return (
-        <button>{ value }</button>
+        <button >{ value } </button>
     )
 }

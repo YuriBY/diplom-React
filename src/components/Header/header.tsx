@@ -3,6 +3,7 @@ import iconSearch from "../../assets/Icon-Search.png";
 import box from "../../assets/box.png";
 import heart from "../../assets/heart.png";
 import man from "../../assets/man.png";
+import { Input } from "../Input/Input";
 
 export const Header = () => {
   return (
@@ -12,7 +13,7 @@ export const Header = () => {
           <img src={bookstore} alt="" className="" />
         </div>
         <div className="w-6/12 h-14 my-6 flex">
-          <div className="relative w-full">
+           {/* <div className="relative w-full">
             <input
               type="search"
               placeholder="Search"
@@ -22,8 +23,15 @@ export const Header = () => {
               src={iconSearch}
               alt="Search"
               className="absolute top-3 right-0 h-8 p-2 cursor-pointer"
-            />
+            />            
+          </div> */}
+          <div className="relative w-full">
+              <Input rightIcon={<img src={iconSearch} alt="Search"/> } mode="withBorder" placeholder="Search"/>
           </div>
+          
+            
+        
+          
         </div>
         <div className="w-1/6 h-14 my-6 flex flex-row">
           <img src={heart} alt="" />

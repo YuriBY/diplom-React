@@ -18,7 +18,7 @@ export const Footer = () => {
             placeholder="Your email"
             className="w-4/5 h-14 px-4 font-dinpro"
           />  
-            <div className="bg-[#313037] hover:bg-[#5B5A62] text-white font-bebas font-bold text-lg w-[147px] h-14 text-center py-3">
+            <div className="bg-[#313037] hover:bg-[#5B5A62] text-white font-bebas font-bold text-lg w-[147px] h-14 text-center py-3" >
               <Button value={'SUBSCRIBE'}/>
             </div>    
             

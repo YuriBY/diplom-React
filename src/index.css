@@ -2,20 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-    font-family: "Helios";
-    src: url('/fonts/helios.otf');
-};
-
-
-@font-face {
-    font-family: "BebasNeue";
-    src: url('/fonts/BebasNeue-Regular.ttf');
-};
-
-
-@font-face {
-    font-family: "DIN Pro Regular";
-    src: url('/fonts/dinpro.otf');
-};
-
+ @layer base {
+    @font-face {
+        font-family: 'Bebas Neue', sans-serif;
+        font-weight: 400;
+        src: url('/public/fonts/BebasNeue-Regular.ttf') format('ttf');
+    } 
+    @font-face {
+        font-family: 'Helios', sans-serif;
+        font-weight: 400;
+        src: url('/public/fonts/helios.otf') format('otf');
+    }
+    @font-face {
+        font-family: 'DIN Pro Regular', sans-serif;
+        font-weight: 400;
+        src: url('/public/fonts/dinpro.otf') format('otf');
+    }
+  }

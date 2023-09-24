@@ -7,8 +7,8 @@ export default {
   theme: {
     extend: {
       fontFamily : {
-        'helios' : ['Helois', 'Regular'],
-        'bebas' : ['Bebas', 'sans-serif'],
+        'helios' : ['Helois', 'sans-serif'],
+        'bebas' : ['Bebas Neue', 'sans-serif'],
         'dinpro' : ['"DIN pro"', 'sans-serif']
       }
     },
