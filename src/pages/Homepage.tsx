@@ -1,10 +1,9 @@
 import { Book } from "../components/Book/Book";
 import { Title } from "../components/Title/Title";
-import { selectAllBooks } from "../redux/books/booksSlice";
+import { searchBooks, selectAllBooks, fetchBooks } from "../redux/books/booksSlice";
 import { useAppSelector, useAppDispatch } from "../redux/hooks";
 import { RootState } from "../redux/store";
 import { useEffect } from "react";
-import { fetchBooks } from "../redux/books/booksSlice";
 import { useSearchParams } from "react-router-dom";
 import { currentPage } from "../utils/currentPage";
 import { PaginationComponent } from "../components/PaginationComponent/PaginationComponent";
@@ -17,6 +16,7 @@ export const Homepage = () => {
   const books = useAppSelector(
     (state: RootState) => selectAllBooks(state).books
   );
+    
   const [searchParams, setSearchParams] = useSearchParams();
   useEffect(() => {
     const stringParams = searchParams.toString();
