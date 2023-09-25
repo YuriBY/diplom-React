@@ -28,7 +28,8 @@ export const Header = () => {
     if (e.key === "Enter") {
       if (e.currentTarget.value) {
         dispatch(searchBooks(e.currentTarget.value));
-        setSearchParams('page=1')
+        setSearchParams('page=1');
+        handleSearchInputChange;
       } else {
         dispatch(fetchBooks())
       }
