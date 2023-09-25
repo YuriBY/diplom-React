@@ -9,6 +9,7 @@ interface PaginationComponentProps {
 export const PaginationComponent = ({ limit }: PaginationComponentProps) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const currentPageFromParams = searchParams.get("page");
+  const currenSearchValue = searchParams.get('search');
   const currentPage = currentPageFromParams
     ? parseInt(currentPageFromParams)
     : 1;
@@ -16,11 +17,24 @@ export const PaginationComponent = ({ limit }: PaginationComponentProps) => {
   const maxNumberOfPages = Math.ceil(limit / 6);
   const updatePageInUrl = (newPage: number) => {
     if (newPage === 0) {
-      setSearchParams({ page: "1" });
+      if (currenSearchValue) {
+        setSearchParams({ page: "1", search: `${currenSearchValue}` });
+      } else {
+        setSearchParams({ page: "1"});
+      }      
     } else if (newPage > maxNumberOfPages) {
-      setSearchParams({ page: maxNumberOfPages.toString() });
+      if (currenSearchValue) {
+        setSearchParams({ page: maxNumberOfPages.toString(), search: `${currenSearchValue}` });
+      } else {
+        setSearchParams({ page: maxNumberOfPages.toString() });
+      }     
     } else {
-      setSearchParams({ page: newPage.toString() });
+      if (currenSearchValue) {
+        setSearchParams({ page: newPage.toString(), search: `${currenSearchValue}` });
+      } else {
+        setSearchParams({ page: newPage.toString() });
+      }
+      
     }
   };
 
