@@ -4,7 +4,7 @@ import { searchBooks, selectAllBooks, fetchBooks } from "../redux/books/booksSli
 import { useAppSelector, useAppDispatch } from "../redux/hooks";
 import { RootState } from "../redux/store";
 import { useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { currentPage } from "../utils/currentPage";
 import { PaginationComponent } from "../components/PaginationComponent/PaginationComponent";
 
@@ -48,7 +48,10 @@ export const Homepage = () => {
     : <Title text="New Releases Books"/> }      
       <div className="w-[1120px] h-[980px] mt-12 mb-20 m-auto flex flex-row flex-wrap gap-5">
         {books.slice(_.start, _.stop).map((book) => (
-          <Book book={book} key={book.isbn13} />
+          <Link key={book.isbn13} to={`/${book.isbn13}`}>
+              <Book book={book} />
+          </Link>
+          
         ))}
       </div>
       <PaginationComponent limit={limit} />
