@@ -2,15 +2,23 @@ import star from "../../assets/Star.png";
 import whiteStar from "../../assets/Icon-Star.png";
 import { SingleBook } from "../../models";
 
+
+const colorList = ['#D7E4FD', '#CAEFF0', '#F4EEFD', '#FEE9E2'];
+
+function getRandomInt(max: number) {
+    return Math.floor(Math.random() * max);
+  }
+
 interface BookProps {
     book: SingleBook
 }
 
 export const Book = ({book} : BookProps) => {
+    const randomClassColor = colorList[getRandomInt(4)]
     return (
         
             <div className="w-[352px] h-[454px] relative">
-                <div className="h-[254px] bg-[#D7E4FD]">
+                <div className={`h-[254px] bg-[${randomClassColor}]`}>
                     <img src={ book.image } alt="" className="w-[226px] h-[264px] mx-auto"/>
                 </div>
                 <div className="flex flex-col">

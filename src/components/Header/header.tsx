@@ -4,7 +4,7 @@ import iconSearch from "../../assets/Icon-Search.png";
 import box from "../../assets/box.png";
 import heart from "../../assets/heart.png";
 import man from "../../assets/man.png";
-import { searchBooks } from "../../redux/books/booksSlice";
+import { fetchBooks, searchBooks } from "../../redux/books/booksSlice";
 import { useAppDispatch } from "../../redux/hooks";
 import { Input } from "../Input/Input";
 import { useSearchParams } from "react-router-dom";
@@ -26,8 +26,12 @@ export const Header = () => {
   };
   const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      console.log(e.currentTarget.value);      
-      dispatch(searchBooks(e.currentTarget.value))
+      if (e.currentTarget.value) {
+        dispatch(searchBooks(e.currentTarget.value));
+        setSearchParams('page=1')
+      } else {
+        dispatch(fetchBooks())
+      }
     }    
   }
 
@@ -40,11 +44,7 @@ export const Header = () => {
         <div className="w-6/12 h-14 my-6 flex">
           <div className="relative w-full">
               <Input rightIcon={<img src={iconSearch} alt="Search"/> } mode="withBorder" placeholder="Search" onChange={handleSearchInputChange} onKeyDown={onKeyDown}/>
-          </div>
-          
-            
-        
-          
+          </div>                   
         </div>
         <div className="w-1/6 h-14 my-6 flex flex-row">
           <img src={heart} alt="" />
