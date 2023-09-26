@@ -1,5 +1,5 @@
-import { Book } from "../components/Book/Book";
-import { Title } from "../components/Title/Title";
+import { Book } from "../components/Book/book";
+import { Title } from "../components/Title/title";
 import { searchBooks, selectAllBooks, fetchBooks } from "../redux/books/booksSlice";
 import { useAppSelector, useAppDispatch } from "../redux/hooks";
 import { RootState } from "../redux/store";

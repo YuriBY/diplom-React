@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 import lefticon from "./../assets/left.png";
 import { Heart } from "../components/Heart/Heart";
+import star from "../assets/Star.png";
+import chevron from "../assets/chevron-right.png";
+import { Button } from "../components/Button/Button";
+
 
 export const SingleBook = () => {
     const {isbn13} = useParams();
@@ -12,6 +16,7 @@ export const SingleBook = () => {
         "subtitle": '',
         "authors": '',
         "publisher": '',
+        'language': '',
         "isbn10": '',
         "isbn13": '',
         "pages": '',
@@ -33,6 +38,7 @@ export const SingleBook = () => {
         "subtitle": string,
         "authors": string,
         "publisher": string,
+        'language': string,
         "isbn10": string,
         "isbn13": string,
         "pages": string,
@@ -60,23 +66,68 @@ export const SingleBook = () => {
             }
         };
 
-        fetchData(); // Вызываем функцию для выполнения запроса
-    }, [isbn13]); // Добавляем isbn13 в массив зависимостей
-    
+        fetchData(); 
+    }, [isbn13]); 
+
+    const rating = parseInt(bookData.rating);
+
+      
     return (
         <>
         <div className="w-[1120px] h-[1300px] m-auto border-2 border-solid">
-            <img src={lefticon} alt="" />
+            <Link to={'/'}><img src={lefticon} alt="" /></Link>
+            
             <h1 className="uppercase font-bebas font-bold text-5xl mt-4">{bookData.title}</h1>
-            <div className="flex flex-wrap mt-8">
+            <div className="flex flex-wrap mt-8 justify-between">
                 <div className="w-[544px] h-[472px] bg-[#FEE9E2] relative">
                     <img src={bookData.image} alt="" className="w-[300px] h-[350px] m-auto mt-10"/>
                     <div className="absolute top-0 right-0">
                         <Heart disabled={false}/>
                     </div>
                 </div>
-                <div className="w-[448px] h-[472px]"></div>
+                <div className="w-[448px] h-[472px] relative">
+                    <div className="flex flex-row justify-between mt-8">
+                        <div className="font-bebas font-bold text-4xl">{bookData.price}</div>
+                        <div className="w-32 h-4 flex flex-row">
+                        {Array.from({ length: rating }).map((_, index) => (
+                            <img src={star} alt="" key={index} className="w-4 h-4 mt-3 mr-2"/>
+                        ))}
+                        </div>
+                    </div>
+                    <div className="w-full h-32 mt-4">
+                        <div className="flex flex-row justify-between font-helios">
+                            <h1 className="text-[#A8A8A8]">Authors</h1>
+                            <div className="text-[#313037]">{bookData.authors}</div>
+                        </div>
+                        <div className="flex flex-row justify-between font-helios">
+                            <h1 className="text-[#A8A8A8]">Publisher</h1>
+                            <div className="text-[#313037]">{bookData.publisher}</div>
+                        </div>
+                        <div className="flex flex-row justify-between font-helios">
+                            <h1 className="text-[#A8A8A8]">Language</h1>
+                            <div className="text-[#313037]">{bookData.language}</div>
+                        </div>
+                        <div className="flex flex-row justify-between font-helios">
+                            <h1 className="text-[#A8A8A8]">Format</h1>
+                            <div className="text-[#313037]">book / ebook (PDF)</div>
+                        </div>
+
+                    </div>
+                    <div className="flex flex-row">
+                        <div className="font-helios text-[#313037]">More detalise</div>
+                        <img src={chevron} alt="" className="w-4 h-4 my-auto"/>
+                    </div>
+                    <div className="w-full h-16 bg-[#313037] text-white mt-16 font-bebas font-bold uppercase text-small cursor-pointer text-center py-4">
+                        <Button value={'ADD TO CART'}/>
+                    </div>
+
+                    
+                    <div className="font-helios text-[#313037] absolute bottom-0 inset-x-40 text-center">Preview book</div>
+                    
+
+                </div>
             </div>
+
         </div>
         <div>
 

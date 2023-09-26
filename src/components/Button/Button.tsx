@@ -1,8 +1,9 @@
 interface ButtonProps {
-    value: string
+    value: string,
+    classname?: string
 }
 
-export const Button = ({value}: ButtonProps) => {
+export const Button = ({value, classname}: ButtonProps) => {
     return (
         <button >{ value } </button>
     )
