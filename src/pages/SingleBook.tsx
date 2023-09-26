@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import lefticon from "./../assets/left.png";
+import { Heart } from "../components/Heart/Heart";
 
 export const SingleBook = () => {
     const {isbn13} = useParams();
@@ -70,6 +71,9 @@ export const SingleBook = () => {
             <div className="flex flex-wrap mt-8">
                 <div className="w-[544px] h-[472px] bg-[#FEE9E2] relative">
                     <img src={bookData.image} alt="" className="w-[300px] h-[350px] m-auto mt-10"/>
+                    <div className="absolute top-0 right-0">
+                        <Heart disabled={false}/>
+                    </div>
                 </div>
                 <div className="w-[448px] h-[472px]"></div>
             </div>
