@@ -4,11 +4,13 @@ import axios from "axios";
 import lefticon from "./../assets/left.png";
 import { Heart } from "../components/Heart/Heart";
 import star from "../assets/Star.png";
+import whitestar from "../assets/Icon-Star.png";
 import chevron from "../assets/chevron-right.png";
 import { Button } from "../components/Button/Button";
 
 
 export const SingleBook = () => {
+    const [openDetails, setOpenDetails] = useState(false);
     const {isbn13} = useParams();
     const [bookData, setBookData] = useState({
         "error": '',
@@ -70,6 +72,9 @@ export const SingleBook = () => {
     }, [isbn13]); 
 
     const rating = parseInt(bookData.rating);
+    const absentStars = 5- rating;
+
+
 
       
     return (
@@ -92,6 +97,9 @@ export const SingleBook = () => {
                         {Array.from({ length: rating }).map((_, index) => (
                             <img src={star} alt="" key={index} className="w-4 h-4 mt-3 mr-2"/>
                         ))}
+                        {Array.from({ length: absentStars }).map((_, index) => (
+                            <img src={whitestar} alt="" key={index} className="w-4 h-4 mt-3 mr-2"/>
+                        ))}
                         </div>
                     </div>
                     <div className="w-full h-32 mt-4">
@@ -113,12 +121,29 @@ export const SingleBook = () => {
                         </div>
 
                     </div>
-                    <div className="flex flex-row">
+                    <div className="flex flex-row cursor-pointer" onClick={() => setOpenDetails((prev) => !prev)}>
                         <div className="font-helios text-[#313037]">More detalise</div>
                         <img src={chevron} alt="" className="w-4 h-4 my-auto"/>
                     </div>
-                    <div className="w-full h-16 bg-[#313037] text-white mt-16 font-bebas font-bold uppercase text-small cursor-pointer text-center py-4">
-                        <Button value={'ADD TO CART'}/>
+
+                    <div className="w-full h-24 mt-4">
+                        {openDetails ? 
+                        <>
+                            <div className="flex flex-row justify-between font-helios">
+                                <h1 className="text-[#A8A8A8]">Authors</h1>
+                                <div className="text-[#313037]">{bookData.authors}</div>
+                            </div>
+                            <div className="flex flex-row justify-between font-helios">
+                                <h1 className="text-[#A8A8A8]">Publisher</h1>
+                                <div className="text-[#313037]">{bookData.publisher}</div>
+                            </div>
+                        </> : ''
+                        }                        
+                        
+                    </div>
+
+                    <div className="w-full h-16 bg-[#313037] text-white cursor-pointer text-center py-4">
+                        <Button classname="font-bebas font-bold text-small uppercase" value={'add to cart'}/>
                     </div>
 
                     

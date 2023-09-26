@@ -1,10 +1,8 @@
 interface ButtonProps {
-    value: string,
-    classname?: string
+  value: string;
+  classname?: string;
 }
 
-export const Button = ({value, classname}: ButtonProps) => {
-    return (
-        <button >{ value } </button>
-    )
-}
+export const Button = ({ value, classname }: ButtonProps) => {
+  return <button className={`${classname}`}>{value} </button>;
+};

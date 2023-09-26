@@ -1,6 +1,7 @@
 import star from "../../assets/Star.png";
 import whiteStar from "../../assets/Icon-Star.png";
 import { SingleBook } from "../../models";
+import { useMemo } from "react";
 
 
 const colorList = ['bg-[#D7E4FD]', 'bg-[#CAEFF0]', 'bg-[#F4EEFD]', 'bg-[#FEE9E2]'];
@@ -14,7 +15,7 @@ interface BookProps {
 }
 
 export const Book = ({book} : BookProps) => {
-    const randomClassColor = colorList[getRandomInt(4)]
+    const randomClassColor = useMemo(() => colorList[getRandomInt(4)], [])
     return (
         
             <div className="w-[352px] h-[454px] relative">

@@ -1,4 +1,4 @@
-import { KeyboardEvent } from "react";
+import { KeyboardEvent, useEffect } from "react";
 import bookstore from "../../assets/Bookstore.png";
 import iconSearch from "../../assets/Icon-Search.png";
 import box from "../../assets/box.png";
@@ -19,23 +19,26 @@ export const Header = () => {
         param.delete("search");
       } else {
         param.set("search", e.target.value);
-        
       }
       return param;
     });
   };
+
+  useEffect(() => {
+    searchParams.get("search");
+  }, []);
+
   const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       if (e.currentTarget.value) {
         dispatch(searchBooks(e.currentTarget.value));
         setSearchParams(`page=1&search=${e.currentTarget.value}`);
-        
       } else {
         dispatch(fetchBooks());
-        setSearchParams({ page: "1"});
+        setSearchParams({ page: "1" });
       }
-    }    
-  }
+    }
+  };
 
   return (
     <>
@@ -45,8 +48,15 @@ export const Header = () => {
         </div>
         <div className="w-6/12 h-14 my-6 flex">
           <div className="relative w-full">
-              <Input rightIcon={<img src={iconSearch} alt="Search"/> } mode="withBorder" placeholder="Search" onChange={handleSearchInputChange} onKeyDown={onKeyDown}/>
-          </div>                   
+            <Input
+              value={searchParams.get("search") || ""}
+              rightIcon={<img src={iconSearch} alt="Search" />}
+              mode="withBorder"
+              placeholder="Search"
+              onChange={handleSearchInputChange}
+              onKeyDown={onKeyDown}
+            />
+          </div>
         </div>
         <div className="w-1/6 h-14 my-6 flex flex-row">
           <img src={heart} alt="" />
