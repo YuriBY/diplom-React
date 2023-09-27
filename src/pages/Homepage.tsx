@@ -27,6 +27,7 @@ export const Homepage = () => {
     }
   }, [searchParams]);
 
+  
   useEffect(() => {
     if (books.length === 0) {
       dispatch(fetchBooks());

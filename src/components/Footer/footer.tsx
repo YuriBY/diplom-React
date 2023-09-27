@@ -1,7 +1,12 @@
 import { Button } from "../Button/Button";
 import { Input } from "../Input/Input";
 
-export const Footer = () => {
+
+interface FooterProps {
+  children?: React.ReactNode;
+}
+
+export const Footer = ({children} : FooterProps) => {
   return (
     <>
       <div className=" w-[1120px] h-80 m-auto grow-0 shrink-0 basis-auto flex flex-col justify-between relative">
@@ -23,7 +28,7 @@ export const Footer = () => {
            
           
         </div>
-
+        {children}
         <div className="h-12 w-full flex flex-row justify-between items-center text-[#A8A8A8] font-helios relative">
           <div>©2022 Bookstore</div>
           <div>All rights reserved</div>

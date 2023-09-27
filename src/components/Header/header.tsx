@@ -24,10 +24,6 @@ export const Header = () => {
     });
   };
 
-  useEffect(() => {
-    searchParams.get("search");
-  }, []);
-
   const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
       if (e.currentTarget.value) {
