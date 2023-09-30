@@ -7,12 +7,15 @@ import { PaginationComponent } from "../PaginationComponent/PaginationComponent"
 export const Layout = () => {
    
   return (
-    <div className='flex flex-col min-h-screen'>
+    <div className='flex flex-col min-h-full'>
       <Header />
-      <div className='flex-grow w-full mx-auto'>
+      <div className='grow-1 shrink-1 basis-auto w-full mx-auto'>
         <Outlet />
       </div>
-      <Footer/>
+      <div className="grow-0 shrink-0 basis-auto">
+          <Footer/>
+      </div>
+      
     </div>
   );
 };

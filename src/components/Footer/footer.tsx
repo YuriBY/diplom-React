@@ -22,14 +22,11 @@ export const Footer = ({children} : FooterProps) => {
             <Input placeholder="Your email" mode="withoutBorder" className="w-4/5 h-14 px-4 font-dinpro"/>
             <div className="bg-[#313037] hover:bg-[#5B5A62] text-white font-bebas font-bold text-lg w-[147px] h-14 text-center py-3" >
               <Button value={'SUBSCRIBE'}/>
-            </div>    
-            
-          </div>
-           
-          
+            </div>            
+          </div>         
         </div>
         {children}
-        <div className="h-12 w-full flex flex-row justify-between items-center text-[#A8A8A8] font-helios relative">
+        <div className="h-12 w-full flex flex-row justify-between items-center text-[#A8A8A8] font-helios relative mt-16">
           <div className="mt-12">©2022 Bookstore</div>
           <div className="mt-12">All rights reserved</div>
           <div className="absolute h-px w-full bg-[#A8A8A8] top-4/5"></div>

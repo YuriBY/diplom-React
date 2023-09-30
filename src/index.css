@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@layer base {
+    body {
+      @apply h-full;
+    }
+    html {
+      @apply h-full;
+    }
+};
+
  @layer base {
     @font-face {
         font-family: 'Bebas Neue', sans-serif;

@@ -12,14 +12,14 @@ export const SingleBookLayout = () => {
   console.log(books);
   
   return (
-    <div className='flex flex-col min-h-screen'>
+    <div className='flex flex-col min-h-full'>
       <Header />
-      <div className='grow-1 shrink-0 basis-auto  w-full mx-auto'>
+      <div className='grow-1 shrink-1 basis-auto w-full mx-auto'>
         <Outlet />
       </div>
       
       <Footer>
-        <div className="flex grow-0 shrink-0 basis-auto  flex-row mt-20 gap-5">
+        <div className="flex grow-0 shrink-0 basis-auto flex-row mt-20 gap-5">
         {books.slice(0, 3).map((book) => (
           <Link key={book.isbn13} to={`/${book.isbn13}`}>
               <Book book={book} />
