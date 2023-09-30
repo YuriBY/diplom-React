@@ -19,7 +19,7 @@ export const SingleBookLayout = () => {
       </div>
       
       <Footer>
-        <div className="flex grow-0 shrink-0 basis-auto flex-row mt-20 gap-5">
+        <div className="flex flex-row mt-20 gap-5">
         {books.slice(0, 3).map((book) => (
           <Link key={book.isbn13} to={`/${book.isbn13}`}>
               <Book book={book} />

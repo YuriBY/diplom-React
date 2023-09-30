@@ -9,8 +9,8 @@ interface FooterProps {
 export const Footer = ({children} : FooterProps) => {
   return (
     <>
-      <div className=" w-[1120px] h-80 m-auto grow-0 shrink-0 basis-auto justify-between relative">
-        <div className="h-3/5 w-full border-solid border-2 bg-[#F4EEFD] px-8">
+      <div className=" w-[1120px] h-72 m-auto grow-0 shrink-0 basis-auto justify-between relative">
+        <div className="h-3/4 w-full border-solid border-2 bg-[#F4EEFD] px-8">
           <h1 className=" font-bebas-700 text-3xl pt-8">
             SUBSCRIBE TO NEWSLETTER
           </h1>
@@ -26,7 +26,7 @@ export const Footer = ({children} : FooterProps) => {
           </div>         
         </div>
         {children}
-        <div className="h-12 w-full flex flex-row justify-between items-center text-[#A8A8A8] font-helios relative mt-16">
+        <div className="w-full flex flex-row justify-between items-center text-[#A8A8A8] font-helios relative">
           <div className="mt-12">©2022 Bookstore</div>
           <div className="mt-12">All rights reserved</div>
           <div className="absolute h-px w-full bg-[#A8A8A8] top-4/5"></div>
