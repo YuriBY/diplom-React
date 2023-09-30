@@ -9,7 +9,7 @@ interface FooterProps {
 export const Footer = ({children} : FooterProps) => {
   return (
     <>
-      <div className=" w-[1120px] h-72 m-auto grow-0 shrink-0 basis-auto justify-between relative">
+      <div className=" w-3/5 h-72 m-auto grow-0 shrink-0 basis-auto justify-between relative">
         <div className="h-3/4 w-full border-solid border-2 bg-[#F4EEFD] px-8">
           <h1 className=" font-bebas-700 text-3xl pt-8">
             SUBSCRIBE TO NEWSLETTER

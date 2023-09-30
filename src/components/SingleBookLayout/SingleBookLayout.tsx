@@ -19,7 +19,7 @@ export const SingleBookLayout = () => {
       </div>
       
       <Footer>
-        <div className="flex flex-row mt-20 gap-5">
+        <div className="flex flex-row flex-wrap justify-between mt-20">
         {books.slice(0, 3).map((book) => (
           <Link key={book.isbn13} to={`/${book.isbn13}`}>
               <Book book={book} />

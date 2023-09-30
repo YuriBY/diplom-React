@@ -1,13 +1,16 @@
 import { Book } from "../components/Book/book";
 import { Title } from "../components/Title/title";
-import { searchBooks, selectAllBooks, fetchBooks } from "../redux/books/booksSlice";
+import {
+  searchBooks,
+  selectAllBooks,
+  fetchBooks,
+} from "../redux/books/booksSlice";
 import { useAppSelector, useAppDispatch } from "../redux/hooks";
 import { RootState } from "../redux/store";
 import { useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
 import { currentPage } from "../utils/currentPage";
 import { PaginationComponent } from "../components/PaginationComponent/PaginationComponent";
-
 
 export const Homepage = () => {
   const dispatch = useAppDispatch();
@@ -19,7 +22,7 @@ export const Homepage = () => {
   const books = useAppSelector(
     (state: RootState) => selectAllBooks(state).books
   );
-    
+
   useEffect(() => {
     const stringParams = searchParams.toString();
     if (!stringParams.length) {
@@ -27,7 +30,6 @@ export const Homepage = () => {
     }
   }, [searchParams]);
 
-  
   useEffect(() => {
     if (books.length === 0) {
       dispatch(fetchBooks());
@@ -36,23 +38,25 @@ export const Homepage = () => {
 
   const _ = currentPage(books);
 
-  const searchValue = searchParams.get('search');
+  const searchValue = searchParams.get("search");
 
-  
   return (
     <>
-    { searchValue ? 
-    <>
-       <Title text={`'${searchValue}' SEARCH RESULTS`}/>
-       <h1 className="font-bebas w-[1120px] mx-auto mt-8 text-[#A8A8A8]">Found {amountBooks} books</h1>
-    </>
-    : <Title text="New Releases Books"/> }      
-      <div className="w-[1120px] h-[980px] mt-12 mb-20 m-auto flex flex-row flex-wrap gap-5">
+      {searchValue ? (
+        <>
+          <Title text={`'${searchValue}' SEARCH RESULTS`} />
+          <h1 className="font-bebas w-3/5 mx-auto mt-8 text-[#A8A8A8]">
+            Found {amountBooks} books
+          </h1>
+        </>
+      ) : (
+        <Title text="New Releases Books" />
+      )}
+      <div className="w-3/5 mt-12 mb-20 m-auto flex flex-row flex-wrap justify-between">
         {books.slice(_.start, _.stop).map((book) => (
           <Link key={book.isbn13} to={`/${book.isbn13}`}>
-              <Book book={book} />
+            <Book book={book} />
           </Link>
-          
         ))}
       </div>
       <PaginationComponent limit={limit} />

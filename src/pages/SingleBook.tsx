@@ -65,7 +65,7 @@ export const SingleBook = () => {
         const response = await axios.get(
           `https://api.itbook.store/1.0/books/${isbn13}`
         );
-        setBookData(response.data); 
+        setBookData(response.data);
       } catch (error) {
         console.error("Ошибка при загрузке данных:", error);
       }
@@ -79,7 +79,7 @@ export const SingleBook = () => {
 
   return (
     <>
-      <div className="w-[1120px] h-[900px] m-auto">
+      <div className="w-3/5 h-[900px] m-auto">
         <Link to={"/"}>
           <img src={lefticon} alt="" />
         </Link>
