@@ -5,7 +5,7 @@ import { bookData } from "../../pages/SingleBook";
 type TabsProps = Pick<bookData, "desc" | "authors" | 'subtitle'>;
 
 export const Tabs = ({desc, authors, subtitle} : TabsProps) => {
-    const [descState, setDescState] = useState(false);
+    const [descState, setDescState] = useState(true);
     const [authState, setAuthState] = useState(false);
     const [subState, setSubState] = useState(false);
     const changeStatesFirst = () => {

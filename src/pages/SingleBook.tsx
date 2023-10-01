@@ -79,26 +79,26 @@ export const SingleBook = () => {
 
   return (
     <>
-      <div className="w-3/5 h-[900px] m-auto">
+      <div className="w-11/12 lg:w-3/5 h-[1500px] lg:h-[900px] m-auto">
         <Link to={"/"}>
           <img src={lefticon} alt="" />
         </Link>
 
-        <h1 className="uppercase font-bebas font-bold text-5xl mt-4">
+        <h1 className="uppercase font-bebas font-bold text-2xl lg:text-5xl mt-4">
           {bookData.title}
         </h1>
         <div className="flex flex-wrap mt-8 justify-between">
-          <div className="w-[544px] h-[472px] bg-[#FEE9E2] relative">
+          <div className="w-[272px] h-[272px] lg:w-[544px] lg:h-[472px] bg-[#FEE9E2] relative">
             <img
               src={bookData.image}
               alt=""
-              className="w-[300px] h-[350px] m-auto mt-10"
+              className="w-[150px] h-[175px] lg:w-[300px] lg:h-[350px] m-auto mt-10"
             />
             <div className="absolute top-0 right-0">
               <Heart disabled={false} />
             </div>
           </div>
-          <div className="w-[448px] h-[472px] relative">
+          <div className="w-full lg:w-[448px] h-[596px] lg:h-[472px] relative">
             <div className="flex flex-row justify-between mt-8">
               <div className="font-bebas font-bold text-4xl">
                 {bookData.price}
@@ -122,20 +122,20 @@ export const SingleBook = () => {
                 ))}
               </div>
             </div>
-            <div className="w-full h-32 mt-4">
-              <div className="flex flex-row justify-between font-helios">
+            <div className="w-full h-60 lg:h-32 mt-4">
+              <div className="flex flex-col lg:flex-row lg:justify-between font-helios">
                 <h1 className="text-[#A8A8A8]">Authors</h1>
                 <div className="text-[#313037]">{bookData.authors}</div>
               </div>
-              <div className="flex flex-row justify-between font-helios">
+              <div className="flex flex-col lg:flex-row lg:justify-betweenfont-helios">
                 <h1 className="text-[#A8A8A8]">Publisher</h1>
                 <div className="text-[#313037]">{bookData.publisher}</div>
               </div>
-              <div className="flex flex-row justify-between font-helios">
+              <div className="flex flex-col lg:flex-row lg:justify-between font-helios">
                 <h1 className="text-[#A8A8A8]">Language</h1>
                 <div className="text-[#313037]">{bookData.language}</div>
               </div>
-              <div className="flex flex-row justify-between font-helios">
+              <div className="flex flex-col lg:flex-row lg:justify-between font-helios">
                 <h1 className="text-[#A8A8A8]">Format</h1>
                 <div className="text-[#313037]">book / ebook (PDF)</div>
               </div>
@@ -165,14 +165,14 @@ export const SingleBook = () => {
               )}
             </div>
 
-            <div className="w-full h-16 bg-[#313037] text-white cursor-pointer text-center py-4">
+            <div className="w-11/12 h-16 bg-[#313037] text-white cursor-pointer text-center py-4">
               <Button
-                classname="font-bebas font-bold  text-xl uppercase"
+                classname="font-bebas font-bold text-xl uppercase"
                 value={"add to cart"}
               />
             </div>
 
-            <div className="font-helios text-[#313037] absolute bottom-0 inset-x-40 text-center">
+            <div className="font-helios text-[#313037] absolute bottom-0 inset-x-16 lg:inset-x-40 text-center">
               Preview book
             </div>
           </div>
@@ -182,7 +182,7 @@ export const SingleBook = () => {
           authors={bookData.authors}
           subtitle={bookData.subtitle}
         />
-        <div className="flex flex-row mt-40 w-40 justify-between">
+        <div className="flex flex-row mt-80 lg:mt-40 w-40 justify-between">
           <img src={facebook} alt="" className="w-6 h-6 cursor-pointer" />
           <img src={twitter} alt="" className="w-6 h-6 cursor-pointer" />
           <img src={dots} alt="" className="w-6 h-6 cursor-pointer" />

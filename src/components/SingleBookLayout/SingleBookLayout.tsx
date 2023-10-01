@@ -9,8 +9,7 @@ import { Book } from "../Book/Book";
 
 export const SingleBookLayout = () => {
   const books = useAppSelector((state: RootState) => selectAllBooks(state).books);
-  console.log(books);
-  
+    
   return (
     <div className='flex flex-col min-h-full'>
       <Header />
