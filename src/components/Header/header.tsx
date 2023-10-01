@@ -39,8 +39,8 @@ export const Header = () => {
 
   return (
     <>
-      <div className="flex flex-row w-1/2 m-auto lg:grow-0 lg:shrink-0 lg:basis-auto lg:justify-between lg:w-3/5 md:w-3/5 h-28  ">
-        <div className="w-full lg:w-1/6 h-7 py-10">
+      <div className="flex flex-row m-auto lg:grow-0 lg:shrink-0 lg:basis-auto lg:justify-between lg:w-3/5 md:w-3/5 h-28  ">
+        <div className="w-1/2 lg:w-1/6 h-7 py-10">
           <img src={bookstore} alt="" className="" />
         </div>
         <div className="hidden lg:w-6/12 lg:h-14 lg:my-6 lg:flex">

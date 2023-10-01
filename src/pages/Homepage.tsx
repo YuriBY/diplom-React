@@ -52,7 +52,7 @@ export const Homepage = () => {
       ) : (
         <Title text="New Releases Books" />
       )}
-      <div className="w-3/5 mt-12 mb-20 m-auto flex flex-row flex-wrap justify-between">
+      <div className="w-11/12 lg:w-3/5 lg:mt-12 mb-20 m-auto flex flex-row flex-wrap justify-between">
         {books.slice(_.start, _.stop).map((book) => (
           <Link key={book.isbn13} to={`/${book.isbn13}`}>
             <Book book={book} />

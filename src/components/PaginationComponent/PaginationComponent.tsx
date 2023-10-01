@@ -45,7 +45,7 @@ export const PaginationComponent = ({ limit }: PaginationComponentProps) => {
 
   return (
     <>
-      <div className=" w-3/5 h-16 m-auto grow-0 shrink-0 basis-auto flex flex-col justify-between relative">
+      <div className="w-11/12 lg:w-3/5 h-16 m-auto grow-1 shrink-1 basis-auto flex flex-col justify-between relative">
         <div className="h-9 w-full font-helios-700 flex flex-row justify-between text-[#A8A8A8]">
           <div
             className="flex flex-row cursor-pointer"
