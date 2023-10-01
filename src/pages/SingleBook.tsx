@@ -88,11 +88,11 @@ export const SingleBook = () => {
           {bookData.title}
         </h1>
         <div className="flex flex-wrap mt-8 justify-between">
-          <div className="w-[272px] h-[272px] lg:w-[544px] lg:h-[472px] bg-[#FEE9E2] relative">
+          <div className="w-[272px] h-[272px] md:w-[688px] md:h-[472px] lg:w-[544px] lg:h-[472px] bg-[#FEE9E2] relative">
             <img
               src={bookData.image}
               alt=""
-              className="w-[150px] h-[175px] lg:w-[300px] lg:h-[350px] m-auto mt-10"
+              className="w-[150px] h-[175px] md:w-[300px] md:h-[350px] m-auto mt-10"
             />
             <div className="absolute top-0 right-0">
               <Heart disabled={false} />
@@ -122,20 +122,20 @@ export const SingleBook = () => {
                 ))}
               </div>
             </div>
-            <div className="w-full h-60 lg:h-32 mt-4">
-              <div className="flex flex-col lg:flex-row lg:justify-between font-helios">
+            <div className="w-full h-60 md:h-32 mt-4">
+              <div className="flex flex-col md:flex-row md:justify-between font-helios">
                 <h1 className="text-[#A8A8A8]">Authors</h1>
                 <div className="text-[#313037]">{bookData.authors}</div>
               </div>
-              <div className="flex flex-col lg:flex-row lg:justify-betweenfont-helios">
+              <div className="flex flex-col md:flex-row md:justify-between font-helios">
                 <h1 className="text-[#A8A8A8]">Publisher</h1>
                 <div className="text-[#313037]">{bookData.publisher}</div>
               </div>
-              <div className="flex flex-col lg:flex-row lg:justify-between font-helios">
+              <div className="flex flex-col md:flex-row md:justify-between font-helios">
                 <h1 className="text-[#A8A8A8]">Language</h1>
                 <div className="text-[#313037]">{bookData.language}</div>
               </div>
-              <div className="flex flex-col lg:flex-row lg:justify-between font-helios">
+              <div className="flex flex-col md:flex-row md:justify-between font-helios">
                 <h1 className="text-[#A8A8A8]">Format</h1>
                 <div className="text-[#313037]">book / ebook (PDF)</div>
               </div>
@@ -172,7 +172,7 @@ export const SingleBook = () => {
               />
             </div>
 
-            <div className="font-helios text-[#313037] absolute bottom-0 inset-x-16 lg:inset-x-40 text-center">
+            <div className="font-helios text-[#313037] absolute bottom-0 inset-x-16 md:inset-x-0 lg:inset-x-40 text-center">
               Preview book
             </div>
           </div>
