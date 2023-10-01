@@ -26,10 +26,10 @@ export const Footer = ({children} : FooterProps) => {
           </div>         
         </div>
         {children}
-        <div className="w-full flex flex-col lg:flex-row justify-between items-center text-[#A8A8A8] font-helios relative">
+        <div className="w-full flex flex-col md:flex-row justify-between items-center text-[#A8A8A8] font-helios relative">
           <div className="mt-12">©2022 Bookstore</div>
           <div className="mt-4 lg:mt-12">All rights reserved</div>
-          <div className="absolute h-px w-full bg-[#A8A8A8] bottom-20 lg:top-4/5"></div>
+          <div className="absolute h-px w-full bg-[#A8A8A8] bottom-20 md:bottom-10 lg:top-4/5"></div>
         </div>
       </div>
     </>

@@ -18,7 +18,7 @@ export const Book = ({book} : BookProps) => {
     const randomClassColor = useMemo(() => colorList[getRandomInt(4)], [])
     return (
         
-            <div className="w-full mt-12 lg:mt-0 lg:w-[352px] h-[454px] relative">
+            <div className="w-full mt-12 lg:mt-0 md:w-[328px] lg:w-[352px] h-[454px] relative">
                 <div className={`h-[254px] ${randomClassColor}`}>
                     <img src={ book.image } alt="" className="w-[226px] h-[264px] mx-auto"/>
                 </div>
