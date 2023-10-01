@@ -1,4 +1,4 @@
-import { KeyboardEvent, useEffect } from "react";
+import { KeyboardEvent, useEffect, useState } from "react";
 import bookstore from "../../assets/Bookstore.png";
 import iconSearch from "../../assets/Icon-Search.png";
 import box from "../../assets/box.png";
@@ -11,6 +11,7 @@ import { Input } from "../Input/Input";
 import { useSearchParams } from "react-router-dom";
 
 export const Header = () => {
+  const [visibleInput, setVisibleInput] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useAppDispatch();
 
@@ -37,13 +38,21 @@ export const Header = () => {
     }
   };
 
+  const handeleVisibleInput = () => {
+    setVisibleInput(prev => !prev)
+  };
+
+  const inputOpacityClass = visibleInput ? 'opacity-100' : 'opacity-0';
+ 
+
   return (
     <>
       <div className="flex flex-row m-auto lg:grow-0 lg:shrink-0 lg:basis-auto lg:justify-between lg:w-3/5 md:w-3/5 h-28  ">
         <div className="w-1/2 lg:w-1/6 h-7 py-10">
-          <img src={bookstore} alt="" className="" />
+          <img src={bookstore} alt="" className="ml-4 lg:ml-0" />
         </div>
-        <div className="hidden lg:w-6/12 lg:h-14 lg:my-6 lg:flex">
+        <div className={`${inputOpacityClass} order-last lg:order-none self-end lg:place-self-auto mr-8 lg:mr-0 w-full -translate-x-12 lg:translate-x-0
+        lg:w-6/12 lg:h-14 lg:my-6 lg:flex lg:opacity-100`}>
           <div className="block relative w-full">
             <Input
               value={searchParams.get("search") || ""}
@@ -57,9 +66,9 @@ export const Header = () => {
         </div>
         <div className="w-2/6 lg:w-1/6 h-14 grow-1 my-6 flex flex-row justify-between">         
           <img src={heart} alt="" className="invisible lg:visible"/>
-          <img src={box} alt="" />
+          <img src={box} alt="" className="ml-20 lg:ml-0"/>
           <img src={man} alt="" className="hidden lg:inline lg:w-6 lg:h-6 lg:my-[14px] lg:ml-2" />
-          <img src={burger} alt="" className="w-6 h-6 my-4 lg:hidden"/>
+          <img src={burger} alt="" className="w-6 h-6 my-4 lg:hidden" onClick={handeleVisibleInput}/>
         </div>
       </div>
     </>
