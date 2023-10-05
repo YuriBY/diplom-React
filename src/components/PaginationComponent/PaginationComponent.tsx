@@ -56,23 +56,23 @@ export const PaginationComponent = ({ limit }: PaginationComponentProps) => {
               Prev
             </p>
           </div>
-          <div className="font-helios font-bols text-[#A8A8A8] cursor-pointer">
+          <div className="font-helios font-bold text-[#A8A8A8] cursor-pointer">
             {currentPage > 1 ? (
               <>
                 <span
-                  className="mx-8 text-[#A8A8A8] font-bold hover:text-[#313037]"
+                  className="mx-4 md:mx-8 text-[#A8A8A8] hover:text-[#313037]"
                   onClick={() => updatePageInUrl(currentPage - 1)}
                 >
                   {currentPage - 1}
                 </span>
                 <span
-                  className="mx-8 text-[#313037] font-bold"
+                  className="mx-4 md:mx-8 text-[#313037] "
                   onClick={() => updatePageInUrl(currentPage)}
                 >
                   {currentPage}
                 </span>
                 <span
-                  className="mx-8 text-[#A8A8A8] font-bold hover:text-[#313037]"
+                  className="mx-4 md:mx-8 text-[#A8A8A8]  hover:text-[#313037]"
                   onClick={() => updatePageInUrl(currentPage + 1)}
                 >
                   {" "}
