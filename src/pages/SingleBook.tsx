@@ -11,6 +11,8 @@ import { Tabs } from "../components/Tabs/Tabs";
 import facebook from "../assets/facebook.png";
 import twitter from "../assets/twitter.png";
 import dots from "../assets/more-horizontal.png";
+import { useAppDispatch } from "../redux/hooks";
+import { addtoCart } from "../redux/cart/cartSlice";
 
 export interface bookData {
   error: string;
@@ -35,6 +37,7 @@ export interface bookData {
 }
 
 export const SingleBook = () => {
+  const [colorButton, setColorButton] = useState('bg-[#313037]');
   const [openDetails, setOpenDetails] = useState(false);
   const { isbn13 } = useParams();
   const [bookData, setBookData] = useState({
@@ -58,6 +61,7 @@ export const SingleBook = () => {
       "Chapter 5": "",
     },
   });
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -76,6 +80,11 @@ export const SingleBook = () => {
 
   const rating = parseInt(bookData.rating);
   const absentStars = 5 - rating;
+
+  const handleAddToCart = () => {
+    dispatch(addtoCart(bookData));
+    setColorButton('bg-[#A8A8A8]');
+  };
 
   return (
     <>
@@ -165,10 +174,11 @@ export const SingleBook = () => {
               )}
             </div>
 
-            <div className="w-11/12 h-16 bg-[#313037] text-white cursor-pointer text-center py-4">
+            <div className={`${colorButton} text-white cursor-pointer text-center py-4`} >
               <Button
-                classname="font-bebas font-bold text-xl uppercase"
+                classname="w-full h-16 font-bebas font-bold text-xl uppercase"
                 value={"add to cart"}
+                onClick={handleAddToCart}
               />
             </div>
 
