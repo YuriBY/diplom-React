@@ -1,10 +1,11 @@
-import { Book } from "../components/Book/book";
-import { Title } from "../components/Title/title";
+import { Book } from "../components/Book/Book";
+import { Title } from "../components/Title/Title";
 import {
   searchBooks,
   selectAllBooks,
   fetchBooks,
 } from "../redux/books/booksSlice";
+import { selectSearchValue } from "../redux/searchValue/searchValueSlice";
 import { useAppSelector, useAppDispatch } from "../redux/hooks";
 import { RootState } from "../redux/store";
 import { useEffect } from "react";
@@ -16,6 +17,10 @@ export const Homepage = () => {
   const dispatch = useAppDispatch();
   const [searchParams, setSearchParams] = useSearchParams();
   const booksObj = useAppSelector((state: RootState) => selectAllBooks(state));
+  const mySearchValue = useAppSelector((state: RootState) =>
+    selectSearchValue(state)
+  );
+
   const amountBooks = booksObj.total;
   const limit = parseInt(booksObj.total);
 
@@ -38,13 +43,11 @@ export const Homepage = () => {
 
   const _ = currentPage(books);
 
-  const searchValue = searchParams.get("search");
-
   return (
     <>
-      {searchValue ? (
+      {mySearchValue ? (
         <>
-          <Title text={`'${searchValue}' SEARCH RESULTS`} />
+          <Title text={`'${mySearchValue}' SEARCH RESULTS`} />
           <h1 className="font-bebas w-3/5 mx-auto mt-8 text-[#A8A8A8]">
             Found {amountBooks} books
           </h1>
