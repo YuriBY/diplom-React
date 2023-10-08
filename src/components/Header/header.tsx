@@ -13,6 +13,7 @@ import { Input } from "../Input/Input";
 import { useSearchParams } from "react-router-dom";
 import { selectAllBooksInCart } from "../../redux/cart/cartSlice";
 import { RootState } from "../../redux/store";
+import { Link } from "react-router-dom";
 
 export const Header = () => {
   const [visibleInput, setVisibleInput] = useState(false);
@@ -59,11 +60,14 @@ export const Header = () => {
     <>
       <div className="flex flex-row m-auto lg:grow-0 lg:shrink-0 lg:basis-auto lg:justify-between lg:w-3/5 md:w-11/12 h-28  ">
         <div className="w-1/2 md:w-full lg:w-1/6 h-7 py-10">
-          <img
-            src={bookstore}
-            alt=""
-            className="ml-4 md:-translate-x-4 lg:translate-x-0 lg:ml-0"
-          />
+          <Link to={'/'}>
+            <img
+              src={bookstore}
+              alt=""
+              className="ml-4 md:-translate-x-4 lg:translate-x-0 lg:ml-0"
+            />          
+          </Link>
+          
         </div>
         <div
           className={`${inputOpacityClass} order-last lg:order-none self-end lg:place-self-auto mr-8 lg:mr-0 w-full -translate-x-12 md:-translate-x-44 lg:translate-x-0
@@ -82,17 +86,20 @@ export const Header = () => {
         </div>
         <div className="w-2/6 lg:w-1/6 h-14 grow-1 my-6 flex flex-row justify-between">
           <img src={heart} alt="" className="invisible lg:visible" />
-          {myCartBooks.length ?
-          <img
-          src={shoppingBox}
-          alt=""
-          className="ml-20 mt-[15px] mr-1 w-6 h-6 md:translate-x-48 lg:translate-x-0 lg:ml-0"/>
-          :
-          <img
-            src={box}
-            alt=""
-            className="ml-20 md:translate-x-48 lg:translate-x-0 lg:ml-0"/>     
-        }         
+          <Link to={'/cart'}>
+              {myCartBooks.length ?
+              <img
+              src={shoppingBox}
+              alt=""
+              className="ml-20 mt-[15px] mr-1 w-6 h-6 md:translate-x-48 lg:translate-x-0 lg:ml-0"/>
+              :
+              <img
+                src={box}
+                alt=""
+                className="ml-20 md:translate-x-48 lg:translate-x-0 lg:ml-0"/>     
+            }     
+          </Link>
+              
           <img
             src={man}
             alt=""

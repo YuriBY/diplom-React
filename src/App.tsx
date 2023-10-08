@@ -5,6 +5,8 @@ import { Homepage } from "./pages/Homepage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { SingleBook } from "./pages/SingleBook";
 import { SingleBookLayout } from "./components/SingleBookLayout/SingleBookLayout";
+import { CartLayout } from "./components/CartLayout/CartLayout";
+import { CartBooks } from "./pages/CartPage";
 
 function App() {
   
@@ -13,13 +15,17 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Homepage />} />
           <Route path="*" element={<NotFoundPage />} />
-
         </Route>
+
         <Route path="/:isbn13" element={<SingleBookLayout />}>
           <Route index element={<SingleBook />} />
         </Route>
 
-      </Routes>
+        <Route path="/cart" element={<CartLayout />}>
+          <Route index element={<CartBooks />} />          
+        </Route>
+
+    </Routes>
   )
 }
 

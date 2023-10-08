@@ -30,6 +30,8 @@ export interface bookData {
   price: string;
   image: string;
   url: string;
+  amount?: number;
+  totalPrice?: number
   pdf: {
     "Chapter 2": string;
     "Chapter 5": string;
@@ -92,6 +94,7 @@ export const SingleBook = () => {
         <Link to={"/"}>
           <img src={lefticon} alt="" />
         </Link>
+        
 
         <h1 className="uppercase font-bebas font-bold text-2xl lg:text-5xl mt-4">
           {bookData.title}
