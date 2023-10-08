@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, BaseHTMLAttributes } from 'react';
 import heart from "./../../assets/heart_original.png";
 import heart_active from "./../../assets/heart_active.png";
 import heart_hover from "./../../assets/heart_hover.png";
@@ -8,7 +8,9 @@ interface HeartProps {
     disabled: boolean
 }
 
-export const Heart = ({ disabled }: HeartProps) => {
+type CustomHeart = BaseHTMLAttributes<HTMLBaseElement> & HeartProps;
+
+export const Heart = ({ disabled, ...props }: CustomHeart) => {
     const [hovered, setHovered] = useState(false);
     const [clicked, setClicked] = useState(false);
 

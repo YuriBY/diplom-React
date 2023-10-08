@@ -7,6 +7,7 @@ import { SingleBook } from "./pages/SingleBook";
 import { SingleBookLayout } from "./components/SingleBookLayout/SingleBookLayout";
 import { CartLayout } from "./components/CartLayout/CartLayout";
 import { CartBooks } from "./pages/CartPage";
+import { FavoriteBooks } from "./pages/FavoriteBooks";
 
 function App() {
   
@@ -23,6 +24,10 @@ function App() {
 
         <Route path="/cart" element={<CartLayout />}>
           <Route index element={<CartBooks />} />          
+        </Route>
+
+        <Route path="/favorite" element={<CartLayout />}>
+          <Route index element={<FavoriteBooks />} />          
         </Route>
 
     </Routes>

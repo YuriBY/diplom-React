@@ -4,6 +4,7 @@ import iconSearch from "../../assets/Icon-Search.png";
 import box from "../../assets/shopping-bag 0.png";
 import shoppingBox from "../../assets/shopping-bag 1.png";
 import heart from "../../assets/heart.png";
+import favotiteHeart from "../../assets/favorite.png";
 import man from "../../assets/man.png";
 import burger from "../../assets/Burger.png";
 import { fetchBooks, searchBooks } from "../../redux/books/booksSlice";
@@ -14,6 +15,7 @@ import { useSearchParams } from "react-router-dom";
 import { selectAllBooksInCart } from "../../redux/cart/cartSlice";
 import { RootState } from "../../redux/store";
 import { Link } from "react-router-dom";
+import { selectFavorite } from "../../redux/books/favoriteSlice";
 
 export const Header = () => {
   const [visibleInput, setVisibleInput] = useState(false);
@@ -23,7 +25,10 @@ export const Header = () => {
     selectAllBooksInCart(state)
   );
   console.log(myCartBooks);
-  
+  const myFavoritesBooks = useAppSelector((state: RootState) =>
+    selectFavorite(state)
+  );
+  console.log(myFavoritesBooks);
 
   const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchParams((param) => {
@@ -44,7 +49,7 @@ export const Header = () => {
         setSearchParams(`page=1&search=${e.currentTarget.value}`);
       } else {
         dispatch(fetchBooks());
-        dispatch(addSearchValue(''))
+        dispatch(addSearchValue(""));
         setSearchParams({ page: "1" });
       }
     }
@@ -60,14 +65,13 @@ export const Header = () => {
     <>
       <div className="flex flex-row m-auto lg:grow-0 lg:shrink-0 lg:basis-auto lg:justify-between lg:w-3/5 md:w-11/12 h-28  ">
         <div className="w-full lg:w-1/6 h-7 py-10">
-          <Link to={'/'}>
+          <Link to={"/"}>
             <img
               src={bookstore}
               alt=""
               className="ml-4 md:-translate-x-4 lg:translate-x-0 lg:ml-0"
-            />          
+            />
           </Link>
-          
         </div>
         <div
           className={`${inputOpacityClass} order-last lg:order-none self-end lg:place-self-auto mr-8 lg:mr-0 w-full -translate-x-12 md:-translate-x-44 lg:translate-x-0
@@ -85,21 +89,34 @@ export const Header = () => {
           </div>
         </div>
         <div className="w-2/6 lg:w-1/6 h-14 grow-1 my-6 flex flex-row justify-between">
-          <img src={heart} alt="" className="invisible lg:visible" />
-          <Link to={'/cart'}>
-              {myCartBooks.length ?
+          <Link to={"/favorite"}>
+            {myFavoritesBooks.length ? (
               <img
-              src={shoppingBox}
-              alt=""
-              className="ml-20 mt-[18px] w-6 h-6 md:translate-x-48 lg:translate-x-0 lg:ml-0"/>
-              :
+                src={favotiteHeart}
+                alt=""
+                className="invisible lg:visible"
+              />
+            ) : (
+              <img src={heart} alt="" className="invisible lg:visible" />
+            )}
+          </Link>
+
+          <Link to={"/cart"}>
+            {myCartBooks.length ? (
+              <img
+                src={shoppingBox}
+                alt=""
+                className="ml-20 mt-[18px] w-6 h-6 md:translate-x-48 lg:translate-x-0 lg:ml-0"
+              />
+            ) : (
               <img
                 src={box}
                 alt=""
-                className="ml-20 mt-[18px] w-6 h-6 md:translate-x-48 lg:translate-x-0 lg:ml-0"/>     
-            }     
+                className="ml-20 mt-[18px] w-6 h-6 md:translate-x-48 lg:translate-x-0 lg:ml-0"
+              />
+            )}
           </Link>
-              
+
           <img
             src={man}
             alt=""

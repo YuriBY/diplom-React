@@ -13,6 +13,7 @@ import twitter from "../assets/twitter.png";
 import dots from "../assets/more-horizontal.png";
 import { useAppDispatch } from "../redux/hooks";
 import { addtoCart } from "../redux/cart/cartSlice";
+import { addtoFavorite, deleteFromFavorite } from "../redux/books/favoriteSlice";
 
 export interface bookData {
   error: string;
@@ -31,7 +32,8 @@ export interface bookData {
   image: string;
   url: string;
   amount?: number;
-  totalPrice?: number
+  totalPrice?: number;
+  favorite?: boolean
   pdf: {
     "Chapter 2": string;
     "Chapter 5": string;
@@ -41,6 +43,7 @@ export interface bookData {
 export const SingleBook = () => {
   const [colorButton, setColorButton] = useState('bg-[#313037]');
   const [openDetails, setOpenDetails] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(false);
   const { isbn13 } = useParams();
   const [bookData, setBookData] = useState({
     error: "",
@@ -88,6 +91,17 @@ export const SingleBook = () => {
     setColorButton('bg-[#A8A8A8]');
   };
 
+  const handleAddToFavorite = (e: React.MouseEvent<HTMLImageElement> ) => {
+    const isbn13 = (e.target as HTMLElement).id;
+    if (!isFavorite) {
+      dispatch(addtoFavorite(bookData));
+      setIsFavorite(true);
+    } else {
+      dispatch(deleteFromFavorite(isbn13))
+      setIsFavorite(false);
+    }   
+  };
+
   return (
     <>
       <div className="w-11/12 lg:w-3/5 h-[1500px] lg:h-[900px] m-auto">
@@ -106,8 +120,8 @@ export const SingleBook = () => {
               alt=""
               className="w-[150px] h-[175px] md:w-[300px] md:h-[350px] m-auto mt-10"
             />
-            <div className="absolute top-0 right-0">
-              <Heart disabled={false} />
+            <div className="absolute top-0 right-0" id={bookData.isbn13} onClick={handleAddToFavorite}>
+              <Heart disabled={false}/>
             </div>
           </div>
           <div className="w-full lg:w-[448px] h-[596px] lg:h-[472px] relative">
