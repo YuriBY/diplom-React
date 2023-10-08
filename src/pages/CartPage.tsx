@@ -11,11 +11,7 @@ export const CartBooks = () => {
   const cartBooks = useAppSelector((state: RootState) =>
     selectAllBooksInCart(state)
   );
-  console.log(cartBooks);
   const totalPrice = cartBooks.reduce((accumulator, book) => {
-    // const priceWithoutDollar = book.price.replace('$', '');
-    // const priceAsNumber = parseFloat(priceWithoutDollar);
-    
     if (book.totalPrice !== undefined) {
       return accumulator + book.totalPrice;
     }
@@ -35,13 +31,13 @@ export const CartBooks = () => {
             <img src={lefticon} alt="" />
           </Link>
           <Title text="Your cart"/>
-          <div className="w-full lg:mt-12 mb-20 flex flex-col">
+          <div className="w-full lg:w-full lg:mt-12 mb-20 flex flex-col">
             {cartBooks.map((book) => (
               <Book key={book.isbn13} book={book} />
             ))}
           </div>
           <div className="flex justify-end">
-            <div className="w-1/4">
+            <div className="w-full lg:w-1/4">
               <div className="flex flex-row justify-between font-helios mb-6">
                 <h1 className="text-[#A8A8A8]">Sum total</h1>
                 <h1 className="text-[#313037]">{`$ ${sumWithoutVat.toFixed(2)}`}</h1>

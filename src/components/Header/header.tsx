@@ -1,7 +1,7 @@
 import { KeyboardEvent, useEffect, useState } from "react";
 import bookstore from "../../assets/Bookstore.png";
 import iconSearch from "../../assets/Icon-Search.png";
-import box from "../../assets/box.png";
+import box from "../../assets/shopping-bag 0.png";
 import shoppingBox from "../../assets/shopping-bag 1.png";
 import heart from "../../assets/heart.png";
 import man from "../../assets/man.png";
@@ -59,7 +59,7 @@ export const Header = () => {
   return (
     <>
       <div className="flex flex-row m-auto lg:grow-0 lg:shrink-0 lg:basis-auto lg:justify-between lg:w-3/5 md:w-11/12 h-28  ">
-        <div className="w-1/2 md:w-full lg:w-1/6 h-7 py-10">
+        <div className="w-full lg:w-1/6 h-7 py-10">
           <Link to={'/'}>
             <img
               src={bookstore}
@@ -91,12 +91,12 @@ export const Header = () => {
               <img
               src={shoppingBox}
               alt=""
-              className="ml-20 mt-[15px] mr-1 w-6 h-6 md:translate-x-48 lg:translate-x-0 lg:ml-0"/>
+              className="ml-20 mt-[18px] w-6 h-6 md:translate-x-48 lg:translate-x-0 lg:ml-0"/>
               :
               <img
                 src={box}
                 alt=""
-                className="ml-20 md:translate-x-48 lg:translate-x-0 lg:ml-0"/>     
+                className="ml-20 mt-[18px] w-6 h-6 md:translate-x-48 lg:translate-x-0 lg:ml-0"/>     
             }     
           </Link>
               
@@ -108,7 +108,7 @@ export const Header = () => {
           <img
             src={burger}
             alt=""
-            className="w-6 h-6 my-4 md:translate-x-48 lg:translate-x-0 lg:hidden"
+            className="w-6 h-6 mx-4 my-4 md:translate-x-48 lg:translate-x-0 lg:hidden"
             onClick={handeleVisibleInput}
           />
         </div>

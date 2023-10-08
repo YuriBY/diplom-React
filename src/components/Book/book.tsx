@@ -48,15 +48,15 @@ export const Book = ({ book }: BookProps) => {
   }
   
   return isSingleBook ? (
-    <div className="border-b-2 border-solid lg:w-full h-60 flex flex-row">
-      <div className={`flex-0 w-[256px] h-[192px] ${randomClassColor}`}>
+    <div className="border-b-2 border-solid w-full mt-12 md:mt-0 md:w-full h-[437px] md:h-60 flex flex-col md:flex-row relative">
+      <div className={`w-full ] md:flex-0 md:w-[256px] md:h-[192px] ${randomClassColor}`}>
         <img
           src={(book as bookData).image}
           alt=""
           className="w-[163px] h-[190px] mx-auto"
         />
       </div>
-      <div className="flex-1 flex flex-col w-1/2 ml-10">
+      <div className="flex-0 md:flex-1 flex flex-col w-full md:w-1/2 md:ml-10">
         <h1 className="font-bebas font-bold text-2xl uppercase text-[#313037] mt-3">
           {(book as bookData).title}
         </h1>
@@ -74,16 +74,16 @@ export const Book = ({ book }: BookProps) => {
           
         </div>
       </div>
-      <div className="flex-0 flex w-1/4 flex-row justify-between my-auto">
+      <div className="absolute -bottom-3 right-0 md:relative md:flex-0 md:flex md:w-1/4 md:flex-row md:justify-between md:my-auto">
         <div className="font-bebas font-bold text-4xl text-[#313037]">
           {(book as bookData).totalPrice?.toFixed(2)}
         </div>
-        <img src={x} alt="" className="w-6 h-6 cursor-pointer" id={(book as bookData).isbn13} onClick={deleteItemFromCart}/>
+        <img src={x} alt="" className="w-6 h-6 cursor-pointer invisible md:visible" id={(book as bookData).isbn13} onClick={deleteItemFromCart}/>
       </div>
     </div>
   ) : (
     <div
-      className={`border-2 border-solid w-full mt-12 lg:mt-0 md:w-[328px] lg:w-[352px] h-[454px] relative`}
+      className={`border-2 border-solid w-full mt-12 md:mt-0 md:w-[328px] md:w-[352px] h-[454px] relative`}
     >
       <div className={`h-[254px] ${randomClassColor}`}>
         <img
