@@ -26,7 +26,7 @@ export const CartBooks = () => {
 
     return (
       <>
-        <div className="w-11/12 lg:w-3/5 h-[1500px] lg:h-[900px] mx-auto">
+        <div className="w-11/12 lg:w-3/5 mx-auto">
           <Link to={"/"}>
             <img src={lefticon} alt="" />
           </Link>
@@ -58,7 +58,9 @@ export const CartBooks = () => {
             
 
           </div>
+          
         </div>
+        
       </>
     );
   } else {

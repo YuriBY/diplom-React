@@ -124,7 +124,7 @@ export const Book = ({ book }: BookProps) => {
     </div>
   ) : (
     <div
-      className={`border-2 border-solid w-full mt-12 md:mt-0 md:w-[328px] h-[454px] relative`}
+      className={`w-full mt-12 md:mt-0 md:w-[328px] h-[454px] relative`}
     >
       <div className={`h-[254px] ${randomClassColor}`}>
         <img
@@ -145,7 +145,7 @@ export const Book = ({ book }: BookProps) => {
           <div className="font-bebas font-bold text-2xl text-[#313037]">
             {(book as SingleBook).price}
           </div>
-          <div className="flex flex-row gap-2 ml-20 lg:ml-40">
+          <div className="flex flex-row gap-2 ml-20 lg:ml-36">
             <img src={star} alt="" className="w-4 h-4 my-auto" />
             <img src={star} alt="" className="w-4 h-4 my-auto" />
             <img src={star} alt="" className="w-4 h-4 my-auto" />
