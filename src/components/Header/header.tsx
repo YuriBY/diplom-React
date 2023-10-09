@@ -117,11 +117,14 @@ export const Header = () => {
             )}
           </Link>
 
-          <img
-            src={man}
-            alt=""
-            className="hidden lg:inline lg:w-6 lg:h-6 lg:my-[14px] lg:ml-2"
-          />
+          <Link to={'/signin'}>
+            <img
+              src={man}
+              alt=""
+              className="hidden lg:inline lg:w-6 lg:h-6 lg:my-[14px] lg:ml-2"
+            />
+          </Link>
+          
           <img
             src={burger}
             alt=""
