@@ -2,13 +2,14 @@ import { useState } from "react";
 import { Button } from "../Button/Button";
 import { useForm} from "react-hook-form";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 if (!localStorage.getItem("users")) {
   const initialData: Inputs[] = [];
   localStorage.setItem("users", JSON.stringify(initialData));
 }
 
-interface Inputs {
+export interface Inputs {
   name?: string;
   email: string;
   password: string;
@@ -192,9 +193,12 @@ export const SignInOrSignUp = () => {
           Вы ввели неправильный пароль
         </p>
       )}
-      <div className="font-helios text-sm mt-6 ml-8 mb-10">
-        Forgot password ?
-      </div>
+      <Link to={'/resetPassword'}>
+        <div className="font-helios text-sm mt-6 ml-8 mb-10">
+            Forgot password ?
+        </div>
+      </Link>
+      
       <Button
         value="SIGN IN"
         classname="w-[480px] h-14 bg-[#313037] text-white font-bebas font-bold text-2xl mx-auto"

@@ -9,9 +9,11 @@ import { CartLayout } from "./components/CartLayout/CartLayout";
 import { CartBooks } from "./pages/CartPage";
 import { FavoriteBooks } from "./pages/FavoriteBooks";
 import { SignInPage } from "./pages/SignInPage";
+import { ResetPasswordPage } from "./pages/ResetPasswordPage";
+import { NewPasswordPage } from "./pages/NewPasswordPage";
 
 function App() {
-  
+
   return (
     <Routes>
       
@@ -29,6 +31,10 @@ function App() {
       </Route>
       <Route path="/signin" element={<CartLayout />}>
         <Route index element={<SignInPage />} />
+      </Route>
+      <Route path="/resetPassword" element={<CartLayout />}>
+        <Route index element={<ResetPasswordPage />} />
+        <Route path='newpassword' element={<NewPasswordPage />} />
       </Route>
 
       <Route path="/favorite" element={<CartLayout />}>
