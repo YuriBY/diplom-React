@@ -1,23 +1,70 @@
 import { useState } from "react";
 import { Button } from "../Button/Button";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 
+if (!localStorage.getItem('users')) {
+    const initialData: Inputs[] = [];
+    localStorage.setItem('users', JSON.stringify(initialData));
+  };
 
 interface Inputs {
     name?: string,
     email: string,
     password: string,
-    text?: string
+    confirmpassword?: string
   }
 
 export const SignInOrSignUp = () => {
     const [signUpForm, setSignUpForm] = useState(false);
+    const [checkPassword, setCheckPassword] = useState(false);
+    const [signIncheckEmail, setSignCheckEmail] = useState(false);
+    const [signInCheckPass, setSignInCheckPass] = useState(false);
+    const navigate = useNavigate();
+
     const {
         register,
         handleSubmit,
         watch,
         formState: { errors },
-      } = useForm<Inputs>()
+      } = useForm<Inputs>();
+
+       
+    const checkAndSend = handleSubmit((data) => {
+        if (data.password !== data.confirmpassword) {
+          setCheckPassword(true);
+        } else {
+        const userDataString = localStorage.getItem('users');
+        if (userDataString !== null) {
+            const tempArr = JSON.parse(userDataString);
+            tempArr.push(data);           
+            localStorage.setItem('users', JSON.stringify(tempArr));
+            }
+        }
+      }); 
+
+      const checkUser = handleSubmit((data) => {
+        const userDataString = localStorage.getItem('users');
+        if (userDataString !== null) {
+            const tempArr = JSON.parse(userDataString);
+            const userEmail = tempArr.filter((obj: Inputs) => obj.email === data.email);
+            if (!userEmail) {
+                setSignCheckEmail(true);
+            };
+            const userPass = tempArr.filter((obj: Inputs) => obj.password === data.password);
+            if (!userPass) {
+                setSignCheckEmail(true);
+            };
+            navigate('/');
+
+            }
+
+        if (data.name !== data.confirmpassword) {
+          setCheckPassword(true);
+        } else {
+        
+        }
+      });   
       
     
     const handleSignInOrSignUp = () => {
@@ -25,7 +72,7 @@ export const SignInOrSignUp = () => {
     }
     return (
         signUpForm ?
-            <form className="border-2 border-solid w-[544px] h-[656px] m-auto mt-[140px] mb-[200px] flex flex-col">
+            <form className="border-2 border-solid w-[544px] h-[656px] m-auto mt-[140px] mb-[200px] flex flex-col" onSubmit={checkAndSend}>
                 <div className="flex flex-row justify-evenly uppercase font-bebas font-bold text-2xl text-[#313037] mt-[26px] cursor-pointer">
                     <div onClick={handleSignInOrSignUp}>sign in</div>
                     <div>sign up</div>
@@ -34,26 +81,30 @@ export const SignInOrSignUp = () => {
                 <label htmlFor="" className="ml-8 font-helios font-bold text-[#313037] mb-2">Name</label>
                 <input {...register("name", {required: true})} className="w-[480px] h-14 border-2 border-solid border-[#E7E7E7] mx-auto text-[#A8A8A8] pl-[20px] font-helios" placeholder="Your name"/>
                 <label htmlFor="" className="ml-8 font-helios font-bold text-[#313037] mb-2">Email</label>
-                <input {...register("email", {required: true})} className="w-[480px] h-14 border-2 border-solid border-[#E7E7E7] mx-auto text-[#A8A8A8] pl-[20px] font-helios" placeholder="Your email"/>
+                <input {...register("email", {required: true, pattern: /^\S+@\S+$/i,})} className="w-[480px] h-14 border-2 border-solid border-[#E7E7E7] mx-auto text-[#A8A8A8] pl-[20px] font-helios" placeholder="Your email"/>
+                {errors.email && <p className="ml-8 font-helios text-red-500">Введите правильный адрес</p>} 
                 <label htmlFor="" className="ml-8 font-helios font-bold text-[#313037] mb-2 mt-6">Password</label>
                 <input {...register("password", {required: true})} className="w-[480px] h-14 border-2 border-solid border-[#E7E7E7] mx-auto text-[#A8A8A8] pl-[20px] font-helios" placeholder="Your password"/>
                 <label htmlFor="" className="ml-8 font-helios font-bold text-[#313037] mb-2 mt-6">Confirm password</label>
-                <input {...register("text", {required: true})} className="w-[480px] h-14 border-2 border-solid border-[#E7E7E7] mx-auto text-[#A8A8A8] pl-[20px] font-helios" placeholder="Confirm your password"/>
+                <input {...register("confirmpassword", {required: true})} className="w-[480px] h-14 border-2 border-solid border-[#E7E7E7] mx-auto text-[#A8A8A8] pl-[20px] font-helios" placeholder="Confirm your password"/>
+                {checkPassword && <p className="ml-8 font-helios text-red-500">Пароль и подтверждение пароля не совпадают</p>}             
                 <Button value='SIGN UP' classname="mt-10 w-[480px] h-14 bg-[#313037] text-white font-bebas font-bold text-2xl mx-auto"/>
             </form> 
             :
 
-            <form onSubmit={handleSubmit((data) => {console.log(data);
-            })} className="border-2 border-solid w-[544px] h-[480px] m-auto mt-[140px] mb-[200px] flex flex-col">
+            <form onSubmit={checkUser} className="border-2 border-solid w-[544px] h-[480px] m-auto mt-[140px] mb-[200px] flex flex-col">
                 <div className="flex flex-row justify-evenly uppercase font-bebas font-bold text-2xl text-[#313037] mt-[26px] cursor-pointer">
                     <div>sign in</div>
                     <div onClick={handleSignInOrSignUp}>sign up</div>
                 </div>
                 <div className="w-[239px] h-px bg-[#313037] ml-8 mb-8"></div>
                 <label htmlFor="" className="ml-8 font-helios font-bold text-[#313037] mb-2">Email</label>
-                <input {...register("email", {required: true})} className="w-[480px] h-14 border-2 border-solid border-[#E7E7E7] mx-auto text-[#A8A8A8] pl-[20px] font-helios" placeholder="Your email"/>
+                <input {...register("email", {required: true, pattern: /^\S+@\S+$/i,})} className="w-[480px] h-14 border-2 border-solid border-[#E7E7E7] mx-auto text-[#A8A8A8] pl-[20px] font-helios" placeholder="Your email"/>
+                {errors.email && <p className="ml-8 font-helios text-red-500">Введите правильный адрес</p>} 
+                {signIncheckEmail && <p className="ml-8 font-helios text-red-500">Такого пользователя не существует</p>}   
                 <label htmlFor="" className="ml-8 font-helios font-bold text-[#313037] mb-2 mt-6">Password</label>
                 <input {...register("password", {required: true})} className="w-[480px] h-14 border-2 border-solid border-[#E7E7E7] mx-auto text-[#A8A8A8] pl-[20px] font-helios" placeholder="Your password"/>
+                {signInCheckPass && <p className="ml-8 font-helios text-red-500">Вы ввели неправильный пароль</p>} 
                 <div className="font-helios text-sm mt-6 ml-8 mb-10">Forgot password ?</div>
                 <Button value='SIGN IN' classname="w-[480px] h-14 bg-[#313037] text-white font-bebas font-bold text-2xl mx-auto"/>
             </form>
