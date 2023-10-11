@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Button } from "../components/Button/Button";
 import { useForm, SubmitHandler} from "react-hook-form";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Inputs } from "./../components/SignIn/SignInOrSignUp";
 
 interface NewPassInputs {
@@ -16,14 +16,15 @@ export const NewPasswordPage = () => {
     watch,
     formState: { errors },
   } = useForm<NewPassInputs>();
+  const location = useLocation();
+  const navigate = useNavigate();
+  
 
     const onSubmit: SubmitHandler<NewPassInputs> = (data) => {
       
       const userDataString = localStorage.getItem("users");
-      console.log(userDataString);      
       const userEmail = localStorage.getItem("emailTOreset");
-      console.log(userEmail);
-      
+            
       if (data.password !== data.confirmpassword) {
         setCheckPassword(true);
       } else {
@@ -31,52 +32,20 @@ export const NewPasswordPage = () => {
           const tempArr = JSON.parse(userDataString);
           const objIndex = tempArr.findIndex(
               (obj: Inputs) => obj.email == userEmail
-            );
-          console.log(objIndex);
+            );   
           
           tempArr[objIndex].password = data.password;
-          console.log(tempArr);
-          
           localStorage.setItem("users", JSON.stringify(tempArr));
           localStorage.setItem("emailTOreset", ''); 
-          navigate('/')
+          navigate('/signin', { state: { from: location } })
             } 
       } 
 
     }
     
-    const navigate = useNavigate();
+    
     const [checkPassword, setCheckPassword] = useState(false);
        
-
-    // const saveNewPassToLocalStoridge = handleSubmit((data) => {
-      
-    //   const userDataString = localStorage.getItem("users");
-    //   console.log(userDataString);      
-    //   const userEmail = localStorage.getItem("emailTOreset");
-    //   console.log(userEmail);
-      
-    //   if (data.password !== data.confirmpassword) {
-    //     setCheckPassword(true);
-    //   } else {
-    //     if (userDataString !== null) {
-    //       const tempArr = JSON.parse(userDataString);
-    //       const objIndex = tempArr.findIndex(
-    //           (obj: Inputs) => obj.email == userEmail
-    //         );
-    //       console.log(objIndex);
-          
-    //       tempArr[objIndex].password = data.password;
-    //       console.log(tempArr);
-          
-    //       localStorage.setItem("users", JSON.stringify(tempArr));
-    //       localStorage.setItem("emailTOreset", ''); 
-    //       navigate('/')
-    //         } 
-    //   }      
-    // });      
-     
-
     return (
         <form 
         className="border-2 border-solid w-[544px] h-[432px] m-auto mt-[140px] mb-[340px] flex flex-col" 

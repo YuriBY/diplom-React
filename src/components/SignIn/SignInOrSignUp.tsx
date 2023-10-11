@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button } from "../Button/Button";
 import { useForm} from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 if (!localStorage.getItem("users")) {
   const initialData: Inputs[] = [];
@@ -24,7 +24,10 @@ export const SignInOrSignUp = () => {
   const [isRegistratedEmail, setIsRegistratedEmail] = useState(false);
   const [isRegistratedName, setIsRegistratedName] = useState(false);
   const navigate = useNavigate();
-
+  const location = useLocation();
+    
+  const shouldShowResetPasswordBlock = location.state?.from.pathname === '/resetPassword/newpassword';
+  
   const {
     register,
     handleSubmit,
@@ -145,7 +148,7 @@ export const SignInOrSignUp = () => {
       >
         Password
       </label>
-      <input
+      <input type="password"
         {...register("password", { required: true })}
         className="w-[480px] h-14 border-2 border-solid border-[#E7E7E7] mx-auto text-[#A8A8A8] pl-[20px] font-helios"
         placeholder="Your password"
@@ -156,7 +159,7 @@ export const SignInOrSignUp = () => {
       >
         Confirm password
       </label>
-      <input
+      <input type="password"
         {...register("confirmpassword", { required: true })}
         className="w-[480px] h-14 border-2 border-solid border-[#E7E7E7] mx-auto text-[#A8A8A8] pl-[20px] font-helios"
         placeholder="Confirm your password"
@@ -180,7 +183,9 @@ export const SignInOrSignUp = () => {
         <div>sign in</div>
         <div onClick={handleSignInOrSignUp}>sign up</div>
       </div>
-      <div className="w-[239px] h-px bg-[#313037] ml-8 mb-8"></div>
+      <div className="w-[239px] h-px bg-[#313037] ml-8 mb-4"></div>
+
+      {shouldShowResetPasswordBlock && <div className="w-[480px] h-[64px] mx-auto bg-[#F4EEFD] font-helios pt-5 pl-5 mb-4" >Your password has been changed !</div>}
       <label
         htmlFor=""
         className="ml-8 font-helios font-bold text-[#313037] mb-2"
@@ -209,7 +214,7 @@ export const SignInOrSignUp = () => {
       >
         Password
       </label>
-      <input
+      <input type="password"
         {...register("password", { required: true })}
         className="w-[480px] h-14 border-2 border-solid border-[#E7E7E7] mx-auto text-[#A8A8A8] pl-[20px] font-helios"
         placeholder="Your password"

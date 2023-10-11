@@ -24,11 +24,10 @@ export const Header = () => {
   const myCartBooks = useAppSelector((state: RootState) =>
     selectAllBooksInCart(state)
   );
-  console.log(myCartBooks);
+  
   const myFavoritesBooks = useAppSelector((state: RootState) =>
     selectFavorite(state)
   );
-  console.log(myFavoritesBooks);
 
   const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchParams((param) => {
