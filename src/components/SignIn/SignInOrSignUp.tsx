@@ -21,6 +21,8 @@ export const SignInOrSignUp = () => {
   const [checkPassword, setCheckPassword] = useState(false);
   const [signIncheckEmail, setSignIncheckEmail] = useState(false);
   const [signInCheckPass, setSignInCheckPass] = useState(false);
+  const [isRegistratedEmail, setIsRegistratedEmail] = useState(false);
+  const [isRegistratedName, setIsRegistratedName] = useState(false);
   const navigate = useNavigate();
 
   const {
@@ -37,8 +39,21 @@ export const SignInOrSignUp = () => {
       const userDataString = localStorage.getItem("users");
       if (userDataString !== null) {
         const tempArr = JSON.parse(userDataString);
-        tempArr.push(data);
-        localStorage.setItem("users", JSON.stringify(tempArr));
+        const registeredEmail = tempArr.findIndex((obj: Inputs) => obj.email == data.email);
+        const registeredName = tempArr.findIndex((obj: Inputs) => obj.name == data.name);
+        
+        if (registeredEmail === -1) {
+           if (registeredName === -1) {
+               tempArr.push(data);
+               localStorage.setItem("users", JSON.stringify(tempArr));
+               setSignUpForm(false);
+            } else {
+               setIsRegistratedName(true);
+             }
+         } else {
+          setIsRegistratedEmail(true);
+        }
+        
       }
     }
   });
@@ -87,18 +102,24 @@ export const SignInOrSignUp = () => {
       <div className="w-[239px] h-px bg-[#313037] ml-[247px] mb-8"></div>
       <label
         htmlFor=""
-        className="ml-8 font-helios font-bold text-[#313037] mb-2"
+        className="ml-8 font-helios font-bold text-[#313037] mb-2"       
       >
         Name
       </label>
+      
       <input
         {...register("name", { required: true })}
         className="w-[480px] h-14 border-2 border-solid border-[#E7E7E7] mx-auto text-[#A8A8A8] pl-[20px] font-helios"
-        placeholder="Your name"
+        placeholder="Your name"  onChange={() => setIsRegistratedName(false)}
       />
+      {isRegistratedName && (
+        <p className="ml-8 font-helios text-red-500">
+          Даннное имя уже используется
+        </p>
+      )}
       <label
         htmlFor=""
-        className="ml-8 font-helios font-bold text-[#313037] mb-2"
+        className="ml-8 font-helios font-bold text-[#313037] mb-2"       
       >
         Email
       </label>
@@ -106,10 +127,16 @@ export const SignInOrSignUp = () => {
         {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
         className="w-[480px] h-14 border-2 border-solid border-[#E7E7E7] mx-auto text-[#A8A8A8] pl-[20px] font-helios"
         placeholder="Your email"
+        onChange={() => setIsRegistratedEmail(false)}
       />
       {errors.email && (
         <p className="ml-8 font-helios text-red-500">
           Введите правильный адрес
+        </p>
+      )}
+      {isRegistratedEmail && (
+        <p className="ml-8 font-helios text-red-500">
+          Данный email уже используется
         </p>
       )}
       <label
