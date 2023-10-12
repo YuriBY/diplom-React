@@ -11,6 +11,7 @@ import { FavoriteBooks } from "./pages/FavoriteBooks";
 import { SignInPage } from "./pages/SignInPage";
 import { ResetPasswordPage } from "./pages/ResetPasswordPage";
 import { NewPasswordPage } from "./pages/NewPasswordPage";
+import { AccountPage } from "./pages/AccountPage";
 
 function App() {
 
@@ -28,6 +29,9 @@ function App() {
 
       <Route path="/cart" element={<CartLayout />}>
         <Route index element={<CartBooks />} />
+      </Route>
+      <Route path="/account" element={<CartLayout />}>
+        <Route index element={<AccountPage/>} />
       </Route>
       <Route path="/signin" element={<CartLayout />}>
         <Route index element={<SignInPage />} />

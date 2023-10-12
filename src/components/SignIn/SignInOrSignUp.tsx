@@ -70,14 +70,14 @@ export const SignInOrSignUp = () => {
       );
       const userPass = tempArr.filter(
         (obj: Inputs) => obj.password === data.password
-      );
+      ); 
       if (userEmail.length === 0) {
         setSignIncheckEmail(true);
       } else {
         if (userPass.length === 0) {
           setSignInCheckPass(true);
         } else {
-          navigate("/");
+          navigate("/account", { state: { from: location, email: data.email} });
         }
       }
     }
