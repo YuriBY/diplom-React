@@ -10,7 +10,7 @@ interface HeartProps {
 
 type CustomHeart = BaseHTMLAttributes<HTMLBaseElement> & HeartProps;
 
-export const Heart = ({ disabled, ...props }: CustomHeart) => {
+export const Heart = ({ disabled }: CustomHeart) => {
     const [hovered, setHovered] = useState(false);
     const [clicked, setClicked] = useState(false);
 

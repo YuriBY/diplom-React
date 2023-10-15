@@ -25,13 +25,14 @@ export const SignInOrSignUp = () => {
   const [isRegistratedName, setIsRegistratedName] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+  console.log(location);
+  
     
   const shouldShowResetPasswordBlock = location.state?.from.pathname === '/resetPassword/newpassword';
-  
+    
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm<Inputs>();
 
@@ -81,9 +82,6 @@ export const SignInOrSignUp = () => {
         }
       }
     }
-
-    const watchEmail = watch("email");
-    console.log(watchEmail);
 
     if (data.name !== data.confirmpassword) {
       setCheckPassword(true);

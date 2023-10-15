@@ -2,7 +2,7 @@ import { useSearchParams } from "react-router-dom";
 import { SingleBook } from "../models";
 
 export const currentPage = (books: SingleBook[]) => {
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
     const currentPageFromParams = searchParams.get("page");
     if (currentPageFromParams) {
       const start = (parseInt(currentPageFromParams) - 1) * 6;

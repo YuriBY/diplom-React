@@ -12,9 +12,7 @@ export const ResetPasswordPage = () => {
     const {
         register,
         handleSubmit,
-        watch,
-        formState: { errors },
-      } = useForm<ResetInputs>();
+        } = useForm<ResetInputs>();
       const navigate = useNavigate();
       const [iSEmailExist, setISEmailExist ] = useState(true);
 

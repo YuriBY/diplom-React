@@ -1,5 +1,4 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import type { PayloadAction } from "@reduxjs/toolkit";
 import type { RootState } from "../store";
 import axios from "axios";
 import { SingleBook } from "../../models";
@@ -41,10 +40,10 @@ export const booksSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchBooks.fulfilled, (state, action) => {
+    builder.addCase(fetchBooks.fulfilled, (_, action) => {
       return action.payload;
     });
-    builder.addCase(searchBooks.fulfilled, (state, action) => {
+    builder.addCase(searchBooks.fulfilled, (_, action) => {
       return action.payload;
     });
   },

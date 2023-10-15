@@ -1,7 +1,6 @@
 import { Book } from "../components/Book/Book";
 import { Title } from "../components/Title/Title";
 import {
-  searchBooks,
   selectAllBooks,
   fetchBooks,
 } from "../redux/books/booksSlice";

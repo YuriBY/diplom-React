@@ -1,4 +1,4 @@
-import { KeyboardEvent, useEffect, useState } from "react";
+import { KeyboardEvent, useState } from "react";
 import bookstore from "../../assets/Bookstore.png";
 import iconSearch from "../../assets/Icon-Search.png";
 import box from "../../assets/shopping-bag 0.png";
@@ -62,8 +62,8 @@ export const Header = () => {
 
   return (
     <>
-      <div className="flex flex-row m-auto lg:grow-0 lg:shrink-0 lg:basis-auto lg:justify-between lg:w-3/5 md:w-11/12 h-28  ">
-        <div className="w-full lg:w-1/6 h-7 py-10">
+      <div className="flex md:flex-row flex-wrap md:flex-nowrap m-auto lg:grow-0 lg:shrink-0 lg:basis-auto lg:justify-between lg:w-3/5 md:w-11/12 h-36 ">
+        <div className="md:w-full lg:w-1/6 h-7 py-10 order-1 md:order-none">
           <Link to={"/"}>
             <img
               src={bookstore}
@@ -73,7 +73,7 @@ export const Header = () => {
           </Link>
         </div>
         <div
-          className={`${inputOpacityClass} order-last lg:order-none self-end lg:place-self-auto mr-8 lg:mr-0 w-full -translate-x-12 md:-translate-x-44 lg:translate-x-0
+          className={`${inputOpacityClass} order-last md:order-none ml-4 md:self-end lg:place-self-auto mr-8 lg:mr-0 w-full 
         lg:w-6/12 lg:h-14 lg:my-6 lg:flex lg:opacity-100`}
         >
           <div className="block relative w-full">
@@ -87,7 +87,7 @@ export const Header = () => {
             />
           </div>
         </div>
-        <div className="w-2/6 lg:w-1/6 h-14 grow-1 my-6 flex flex-row justify-between">
+        <div className="w-1/2 lg:w-1/6 h-14 grow-1 my-6 flex flex-row justify-between order-2 md:order-none">
           <Link to={"/favorite"}>
             {myFavoritesBooks.length ? (
               <img
@@ -105,13 +105,13 @@ export const Header = () => {
               <img
                 src={shoppingBox}
                 alt=""
-                className="ml-20 mt-[18px] w-6 h-6 md:translate-x-48 lg:translate-x-0 lg:ml-0"
+                className="ml-20 mt-[18px] w-6 h-6 md:-translate-x-16 lg:translate-x-0 lg:ml-0"
               />
             ) : (
               <img
                 src={box}
                 alt=""
-                className="ml-20 mt-[18px] w-6 h-6 md:translate-x-48 lg:translate-x-0 lg:ml-0"
+                className="md:ml-20 mt-[18px] w-6 h-6 md:-translate-x-16 lg:translate-x-0 lg:ml-0"
               />
             )}
           </Link>
@@ -127,7 +127,7 @@ export const Header = () => {
           <img
             src={burger}
             alt=""
-            className="w-6 h-6 mx-4 my-4 md:translate-x-48 lg:translate-x-0 lg:hidden"
+            className="w-6 h-6 mx-4 my-5 lg:translate-x-0 lg:hidden"
             onClick={handeleVisibleInput}
           />
         </div>

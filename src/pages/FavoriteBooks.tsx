@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import lefticon from "../assets/left.png";
 import { Title } from "../components/Title/Title";
 import { Book } from "../components/Book/Book";
-import { Button } from "../components/Button/Button";
 import { selectFavorite } from "../redux/books/favoriteSlice";
 import { selectAllBooks } from "../redux/books/booksSlice";
 
