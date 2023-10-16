@@ -9,7 +9,7 @@ import { useAppSelector, useAppDispatch } from "../redux/hooks";
 import { RootState } from "../redux/store";
 import { useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { currentPage } from "../utils/currentPage";
+import { useCalculateCurruntPage } from "../utils/currentPage";
 import { PaginationComponent } from "../components/PaginationComponent/PaginationComponent";
 
 export const Homepage = () => {
@@ -40,7 +40,7 @@ export const Homepage = () => {
     }
   }, [dispatch, books]);
 
-  const _ = currentPage(books);
+  const _ = useCalculateCurruntPage(books);
 
   return (
     <>
