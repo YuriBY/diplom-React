@@ -9,7 +9,7 @@ import { useAppSelector, useAppDispatch } from "../redux/hooks";
 import { RootState } from "../redux/store";
 import { useEffect } from "react";
 import { Link, useSearchParams } from "react-router-dom";
-import { useCalculateCurruntPage } from "../utils/currentPage";
+import { useCalculateCurruntPage } from "../utils/useCalculateCurruntPage";
 import { PaginationComponent } from "../components/PaginationComponent/PaginationComponent";
 
 export const Homepage = () => {
