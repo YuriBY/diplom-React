@@ -78,6 +78,7 @@ export const SignInOrSignUp = () => {
         if (userPass.length === 0) {
           setSignInCheckPass(true);
         } else {
+          localStorage.setItem("onlineUser", `${data.email}`);
           navigate("/account", { state: { from: location, email: data.email} });
         }
       }
@@ -93,14 +94,14 @@ export const SignInOrSignUp = () => {
   };
   return signUpForm ? (
     <form
-      className="border-2 border-solid w-[544px] h-[656px] m-auto mt-[140px] mb-[200px] flex flex-col"
+      className="md:border-2 md:border-solid w-[320px] md:w-[544px] h-[480px] m-auto mt-[140px] mb-[200px] flex flex-col"
       onSubmit={checkAndSend}
     >
       <div className="flex flex-row justify-evenly uppercase font-bebas font-bold text-2xl text-[#313037] mt-[26px] cursor-pointer">
         <div onClick={handleSignInOrSignUp}>sign in</div>
         <div>sign up</div>
       </div>
-      <div className="w-[239px] h-px bg-[#313037] ml-[247px] mb-8"></div>
+      <div className="w-1/3 md:w-[239px] h-px bg-[#313037] ml-[180px] md:ml-[247px] mb-8"></div>
       <label
         htmlFor=""
         className="ml-8 font-helios font-bold text-[#313037] mb-2"       
@@ -110,7 +111,7 @@ export const SignInOrSignUp = () => {
       
       <input
         {...register("name", { required: true })}
-        className="w-[480px] h-14 border-2 border-solid border-[#E7E7E7] mx-auto text-[#A8A8A8] pl-[20px] font-helios"
+        className="w-11/12 md:w-[480px] h-14 border-2 border-solid border-[#E7E7E7] mx-auto text-[#A8A8A8] pl-[20px] font-helios"
         placeholder="Your name"  onChange={() => setIsRegistratedName(false)}
       />
       {isRegistratedName && (
@@ -126,7 +127,7 @@ export const SignInOrSignUp = () => {
       </label>
       <input
         {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
-        className="w-[480px] h-14 border-2 border-solid border-[#E7E7E7] mx-auto text-[#A8A8A8] pl-[20px] font-helios"
+        className="w-11/12 md:w-[480px] h-14 border-2 border-solid border-[#E7E7E7] mx-auto text-[#A8A8A8] pl-[20px] font-helios"
         placeholder="Your email"
         onChange={() => setIsRegistratedEmail(false)}
       />
@@ -148,7 +149,7 @@ export const SignInOrSignUp = () => {
       </label>
       <input type="password"
         {...register("password", { required: true })}
-        className="w-[480px] h-14 border-2 border-solid border-[#E7E7E7] mx-auto text-[#A8A8A8] pl-[20px] font-helios"
+        className="w-11/12 md:w-[480px] h-14 border-2 border-solid border-[#E7E7E7] mx-auto text-[#A8A8A8] pl-[20px] font-helios"
         placeholder="Your password"
       />
       <label
@@ -159,7 +160,7 @@ export const SignInOrSignUp = () => {
       </label>
       <input type="password"
         {...register("confirmpassword", { required: true })}
-        className="w-[480px] h-14 border-2 border-solid border-[#E7E7E7] mx-auto text-[#A8A8A8] pl-[20px] font-helios"
+        className="w-11/12 md:w-[480px] h-14 border-2 border-solid border-[#E7E7E7] mx-auto text-[#A8A8A8] pl-[20px] font-helios"
         placeholder="Confirm your password"
       />
       {checkPassword && (
@@ -169,19 +170,19 @@ export const SignInOrSignUp = () => {
       )}
       <Button
         value="SIGN UP"
-        classname="mt-10 w-[480px] h-14 bg-[#313037] text-white font-bebas font-bold text-2xl mx-auto"
+        classname="mt-10 w-11/12 md:w-[480px] h-14 bg-[#313037] text-white font-bebas font-bold text-2xl mx-auto"
       />
     </form>
   ) : (
     <form
       onSubmit={checkUser}
-      className="border-2 border-solid w-[544px] h-[480px] m-auto mt-[140px] mb-[200px] flex flex-col"
+      className="md:border-2 md:border-solid w-[320px] md:w-[544px] h-[480px] m-auto mt-[140px] mb-[200px] flex flex-col"
     >
       <div className="flex flex-row justify-evenly uppercase font-bebas font-bold text-2xl text-[#313037] mt-[26px] cursor-pointer">
         <div>sign in</div>
         <div onClick={handleSignInOrSignUp}>sign up</div>
       </div>
-      <div className="w-[239px] h-px bg-[#313037] ml-8 mb-4"></div>
+      <div className="w-1/3 md:w-[239px] h-px bg-[#313037] ml-8 mb-4"></div>
 
       {shouldShowResetPasswordBlock && <div className="w-[480px] h-[64px] mx-auto bg-[#F4EEFD] font-helios pt-5 pl-5 mb-4" >Your password has been changed !</div>}
       <label
@@ -192,7 +193,7 @@ export const SignInOrSignUp = () => {
       </label>
       <input
         {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
-        className="w-[480px] h-14 border-2 border-solid border-[#E7E7E7] mx-auto text-[#A8A8A8] pl-[20px] font-helios"
+        className="w-11/12 md:w-[480px] h-14 border-2 border-solid border-[#E7E7E7] mx-auto text-[#A8A8A8] pl-[20px] font-helios"
         placeholder="Your email"
         onChange={() => setSignIncheckEmail(false)}
       />
@@ -214,7 +215,7 @@ export const SignInOrSignUp = () => {
       </label>
       <input type="password"
         {...register("password", { required: true })}
-        className="w-[480px] h-14 border-2 border-solid border-[#E7E7E7] mx-auto text-[#A8A8A8] pl-[20px] font-helios"
+        className="w-11/12 md:w-[480px] h-14 border-2 border-solid border-[#E7E7E7] mx-auto text-[#A8A8A8] pl-[20px] font-helios"
         placeholder="Your password"
         onChange={() => setSignInCheckPass(false)}
       />
@@ -231,7 +232,7 @@ export const SignInOrSignUp = () => {
       
       <Button
         value="SIGN IN"
-        classname="w-[480px] h-14 bg-[#313037] text-white font-bebas font-bold text-2xl mx-auto"
+        classname="w-11/12 md:w-[480px] h-14 bg-[#313037] text-white font-bebas font-bold text-2xl mx-auto"
       />
     </form>
   );

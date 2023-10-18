@@ -7,28 +7,36 @@ import heart from "../../assets/heart.png";
 import favotiteHeart from "../../assets/favorite.png";
 import man from "../../assets/man.png";
 import burger from "../../assets/Burger.png";
+import x from '../../assets/x (2).png'
 import { fetchBooks, searchBooks } from "../../redux/books/booksSlice";
 import { addSearchValue } from "../../redux/searchValue/searchValueSlice";
 import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import { Input } from "../Input/Input";
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { selectAllBooksInCart } from "../../redux/cart/cartSlice";
 import { RootState } from "../../redux/store";
 import { Link } from "react-router-dom";
 import { selectFavorite } from "../../redux/books/favoriteSlice";
+import { Button } from "../Button/Button";
 
 export const Header = () => {
   const [visibleInput, setVisibleInput] = useState(false);
+  const [isUserOnline, setisUserOnline] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useAppDispatch();
   const myCartBooks = useAppSelector((state: RootState) =>
     selectAllBooksInCart(state)
   );
+  const navigate = useNavigate();
+
   
   const myFavoritesBooks = useAppSelector((state: RootState) =>
     selectFavorite(state)
   );
 
+  const userDataString = localStorage.getItem("onlineUser");
+
+  
   const handleSearchInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearchParams((param) => {
       if (!e.target.value.length) {
@@ -58,6 +66,15 @@ export const Header = () => {
     setVisibleInput((prev) => !prev);
   };
 
+  const handleLogout = () => {
+    localStorage.setItem("onlineUser", ``);
+    
+  };
+
+  const handleSignIn = () => {
+    navigate('/signin')
+  };
+
   const inputOpacityClass = visibleInput ? "opacity-100" : "opacity-0";
 
   return (
@@ -74,7 +91,7 @@ export const Header = () => {
         </div>
         <div
           className={`${inputOpacityClass} order-last md:order-none ml-4 md:self-end lg:place-self-auto mr-8 lg:mr-0 w-full 
-        lg:w-6/12 lg:h-14 lg:my-6 lg:flex lg:opacity-100`}
+        lg:w-6/12 lg:h-14 lg:my-6 lg:flex lg:opacity-100 translate-y-8 lg:translate-x-0 translate-x-1 lg:translate-y-0`}
         >
           <div className="block relative w-full">
             <Input
@@ -125,13 +142,31 @@ export const Header = () => {
           </Link>
           
           <img
-            src={burger}
+            src={visibleInput ? x : burger}
             alt=""
             className="w-6 h-6 mx-4 my-5 lg:translate-x-0 lg:hidden"
             onClick={handeleVisibleInput}
           />
         </div>
       </div>
+      {visibleInput ? 
+      <>
+        <div className="h-px w-11/12 mx-auto bg-[#E7E7E7] -translate-y-12"></div>
+        <div className=" bg-white w-full h-[640px]">
+          <div className="w-11/12 mx-auto h-72 flex flex-col">
+            
+              <div className="font-bebas font-bold uppercase mx-auto mt-16 text-[32px] "><Link to={'/favorite'} onClick={() => setVisibleInput(false)}>favorites </Link></div>
+           
+            
+            <div className="font-bebas font-bold uppercase mx-auto mt-4 text-[32px] "><Link to={'/cart'} onClick={() => setVisibleInput(false)}>cart</Link></div>
+          </div>
+          
+          <div className="mt-4 w-11/12 mx-auto h-14 bg-[#313037] text-white font-bebas font-bold text-2xl text-center pt-3">
+              <Button value={userDataString ? "LOG OUT" : "SIGN IN"}
+               onClick={userDataString ? handleLogout : handleSignIn}/>
+          </div>
+        </div>
+      </> : ''}
     </>
   );
 };
