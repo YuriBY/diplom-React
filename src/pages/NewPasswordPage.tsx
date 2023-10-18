@@ -43,7 +43,7 @@ export const NewPasswordPage = () => {
 
   return (
     <form
-      className="border-2 border-solid w-[544px] h-[432px] m-auto mt-[140px] mb-[340px] flex flex-col"
+      className="border-2 border-solid w-11/12 sm:w-[544px] h-[432px] m-auto mt-[140px] mb-[340px] flex flex-col"
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className="uppercase font-bebas font-bold mt-10 ml-8 text-2xl">
@@ -58,7 +58,7 @@ export const NewPasswordPage = () => {
       <input
         type="password"
         {...register("password", { required: true })}
-        className="w-[480px] h-14 border-2 border-solid border-[#E7E7E7] mx-auto text-[#A8A8A8] pl-[20px] font-helios"
+        className="w-11/12 sm:w-[480px] h-14 border-2 border-solid border-[#E7E7E7] mx-auto text-[#A8A8A8] pl-[20px] font-helios"
         placeholder="Your password"
         onChange={() => setCheckPassword(false)}
       />
@@ -71,7 +71,7 @@ export const NewPasswordPage = () => {
       <input
         type="password"
         {...register("confirmpassword", { required: true })}
-        className="w-[480px] h-14 border-2 border-solid border-[#E7E7E7] mx-auto text-[#A8A8A8] pl-[20px] font-helios"
+        className="w-11/12 sm:w-[480px] h-14 border-2 border-solid border-[#E7E7E7] mx-auto text-[#A8A8A8] pl-[20px] font-helios"
         placeholder="Confirm your password"
         onChange={() => setCheckPassword(false)}
       />
@@ -82,7 +82,7 @@ export const NewPasswordPage = () => {
       )}
       <Button
         value="SET PASSWORD"
-        classname="mt-10 w-[480px] h-14 bg-[#313037] text-white font-bebas font-bold text-2xl mx-auto"
+        classname="mt-10 w-11/12 sm:w-[480px] h-14 bg-[#313037] text-white font-bebas font-bold text-2xl mx-auto"
       />
     </form>
   );

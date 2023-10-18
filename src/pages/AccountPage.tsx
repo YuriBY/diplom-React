@@ -49,7 +49,7 @@ export const AccountPage = () => {
   }
     return (
       <>
-        <div className="w-11/12 lg:w-3/5 h-[920px] md:h-[820px] mx-auto">
+        <div className="w-11/12 lg:w-3/5 h-[1020px] sm:h-[950px] mx-auto">
           <Link to={"/signin"}>
             <img src={lefticon} alt="" />
           </Link>

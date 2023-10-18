@@ -184,7 +184,7 @@ export const SignInOrSignUp = () => {
       </div>
       <div className="w-1/3 md:w-[239px] h-px bg-[#313037] ml-8 mb-4"></div>
 
-      {shouldShowResetPasswordBlock && <div className="w-[480px] h-[64px] mx-auto bg-[#F4EEFD] font-helios pt-5 pl-5 mb-4" >Your password has been changed !</div>}
+      {shouldShowResetPasswordBlock && <div className="w-11/12 md:w-[480px] h-[64px] mx-auto bg-[#F4EEFD] font-helios pt-5 pl-5 mb-4" >Your password has been changed !</div>}
       <label
         htmlFor=""
         className="ml-8 font-helios font-bold text-[#313037] mb-2"

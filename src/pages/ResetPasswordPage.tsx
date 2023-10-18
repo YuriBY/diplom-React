@@ -35,7 +35,7 @@ export const ResetPasswordPage = () => {
 
     return (
         <form onSubmit={saveEmailToLocalStoridge}
-        className="border-2 border-solid w-[544px] h-[324px] m-auto mt-[140px] mb-[340px] flex flex-col"
+        className="md:border-2 md:border-solid w-11/12 md:w-[544px] h-[324px] m-auto mt-[140px] mb-[340px] flex flex-col"
         
       >
         <div className="uppercase font-bebas font-bold mt-10 ml-8 text-2xl">reset password</div>
@@ -47,7 +47,7 @@ export const ResetPasswordPage = () => {
         </label>
         <input
           {...register("email", { required: true, pattern: /^\S+@\S+$/i })}
-          className="w-[480px] h-14 border-2 border-solid border-[#E7E7E7] mx-auto text-[#A8A8A8] pl-[20px] font-helios"
+          className="w-11/12 md:w-[480px] h-14 border-2 border-solid border-[#E7E7E7] mx-auto text-[#A8A8A8] pl-[20px] font-helios"
           placeholder="Your email"
           onChange={() => setISEmailExist(true)}
         />
@@ -58,7 +58,7 @@ export const ResetPasswordPage = () => {
       )}
         <Button
           value="RESET"
-          classname="mt-10 w-[480px] h-14 bg-[#313037] text-white font-bebas font-bold text-2xl mx-auto"
+          classname="mt-10 w-11/12 md:w-[480px] h-14 bg-[#313037] text-white font-bebas font-bold text-2xl mx-auto"
         />
       </form>
     )

@@ -21,7 +21,6 @@ import { Button } from "../Button/Button";
 
 export const Header = () => {
   const [visibleInput, setVisibleInput] = useState(false);
-  const [isUserOnline, setisUserOnline] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const dispatch = useAppDispatch();
   const myCartBooks = useAppSelector((state: RootState) =>
@@ -54,10 +53,12 @@ export const Header = () => {
         dispatch(searchBooks(e.currentTarget.value));
         dispatch(addSearchValue(e.currentTarget.value));
         setSearchParams(`page=1&search=${e.currentTarget.value}`);
+        setVisibleInput(false);
       } else {
         dispatch(fetchBooks());
         dispatch(addSearchValue(""));
         setSearchParams({ page: "1" });
+        setVisibleInput(false);
       }
     }
   };
@@ -68,6 +69,7 @@ export const Header = () => {
 
   const handleLogout = () => {
     localStorage.setItem("onlineUser", ``);
+    setVisibleInput(false);
     
   };
 
@@ -100,7 +102,7 @@ export const Header = () => {
               mode="withBorder"
               placeholder="Search"
               onChange={handleSearchInputChange}
-              onKeyDown={onKeyDown}
+              onKeyDown={onKeyDown}             
             />
           </div>
         </div>
