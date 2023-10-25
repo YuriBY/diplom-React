@@ -1,17 +1,6 @@
-<<<<<<< HEAD
-import './App.css'
-
-function App() {
-  
-
-  return (
-    <>
-      
-    </>
-=======
 import { Route, Routes } from "react-router-dom";
 import './App.css'
-import { Layout } from './components/Layout/Layout'
+import { Layout } from './components/Layout/layout'
 import { Homepage } from "./pages/Homepage";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { SingleBook } from "./pages/SingleBook";
@@ -57,7 +46,6 @@ function App() {
       </Route>
 
     </Routes>
->>>>>>> dev
   )
 }
 

@@ -1,8 +1,5 @@
 @tailwind base;
 @tailwind components;
-<<<<<<< HEAD
-@tailwind utilities;
-=======
 @tailwind utilities;
 
 
@@ -32,4 +29,3 @@
         src: url('/public/fonts/dinpro.otf') format('otf');
     }
   }
->>>>>>> dev
