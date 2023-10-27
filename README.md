@@ -1,9 +1,11 @@
 # React + TypeScript + Vite
-<<<<<<< HEAD
 
-=======
-// my comm
->>>>>>> dev
+To start project:
+npm i
+npm run dev
+
+You can find dependecies in package-lock.json
+
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
 Currently, two official plugins are available:
