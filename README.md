@@ -1,11 +1,33 @@
 # React + TypeScript + Vite
+npm version 9.5.0
+
+├── @reduxjs/toolkit@1.9.5
+├── @types/react-dom@18.2.7
+├── @types/react@18.2.21
+├── @typescript-eslint/eslint-plugin@6.7.0
+├── @typescript-eslint/parser@6.7.0
+├── @vitejs/plugin-react@4.0.4
+├── autoprefixer@10.4.15
+├── axios@1.5.0
+├── eslint-plugin-react-hooks@4.6.0
+├── eslint-plugin-react-refresh@0.4.3
+├── eslint@8.49.0
+├── react-dom@18.2.0
+├── react-hook-form@7.47.0
+├── react-redux@8.1.2
+├── react-router-dom@6.16.0
+├── react@18.2.0
+├── tailwindcss@3.3.3
+├── typescript@5.2.2
+└── vite@4.4.9
+You can find dependecies in package-lock.json
 
 To start project:
+
 npm i
 ###
 npm run dev
 ###
-You can find dependecies in package-lock.json
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
